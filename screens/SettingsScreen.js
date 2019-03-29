@@ -1,14 +1,26 @@
 import React from 'react';
-import { ExpoConfigView } from '@expo/samples';
+import { connect } from 'react-redux';
+import SimpleForm from '../src/components/EventForm';
 
-export default class SettingsScreen extends React.Component {
+import { Provider } from 'react-redux';
+import store from '../src/store';
+
+class SettingsScreen extends React.Component {
   static navigationOptions = {
-    title: 'app.json',
+    title: 'Create an Event',
   };
 
+  submit = (values) => {
+    // print the form values to the console
+    console.log(values);
+  }
+
   render() {
-    /* Go ahead and delete ExpoConfigView and replace it with your
-     * content, we just wanted to give you a quick view of your config */
-    return <ExpoConfigView />;
+
+    return (
+      <SimpleForm />
+    );
   }
 }
+
+export default SettingsScreen;

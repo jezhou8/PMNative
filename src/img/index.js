@@ -1,0 +1,1 @@
+export const STOCK_EVENT = require('./event_stock2.png');

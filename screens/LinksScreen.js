@@ -1,27 +1,44 @@
 import React from 'react';
-import { ScrollView, StyleSheet } from 'react-native';
-import { ExpoLinksView } from '@expo/samples';
+import { ScrollView, StyleSheet, View, Text} from 'react-native';
+import { MapView } from 'expo';
 
-export default class LinksScreen extends React.Component {
+import { connect } from 'react-redux';
+
+import {setDefaultLocation} from '../src/actions'
+
+class LinksScreen extends React.Component {
   static navigationOptions = {
-    title: 'Links',
+    header: null,
   };
 
   render() {
     return (
-      <ScrollView style={styles.container}>
-        {/* Go ahead and delete ExpoLinksView and replace it with your
-           * content, we just wanted to provide you with some helpful links */}
-        <ExpoLinksView />
-      </ScrollView>
+      <View
+        style={{ flex: 1, backgroundColor: '#c0c0c0'}}
+      >
+        <MapView
+          style={{ flex: 1, position: 'absolute',top: 0, left: 0, right: 0, bottom: 0}}
+          initialRegion={{
+            latitude: this.props.location.coords.latitude,
+            longitude: this.props.location.coords.longitude,
+            latitudeDelta: this.props.location.coords.latitudeDelta,
+            longitudeDelta: this.props.location.coords.longitudeDelta,
+          }}
+        />
+      </View>
+       
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingTop: 15,
-    backgroundColor: '#fff',
-  },
-});
+const mapStateToProps = (state) =>{
+  return {
+    location: state.location
+  }
+}
+
+const mapDispatchToProps = (dispatch) = ({
+  setDefaultLocation: () => dispatch(setDefaultLocation)
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(LinksScreen)
