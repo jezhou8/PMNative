@@ -1,15 +1,17 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import SimpleForm from '../src/components/EventForm';
+import {
+  StyleSheet,
+  View,
+} from 'react-native';
 
-import { Provider } from 'react-redux';
-import store from '../src/store';
+import CreateEventHeader from '../src/components/CreateEventHeader';
+import VisibleForm from '../src/container/VisibleForm';
 
 class SettingsScreen extends React.Component {
   static navigationOptions = {
-    title: 'Create an Event',
+    header: null,
   };
-
+  
   submit = (values) => {
     // print the form values to the console
     console.log(values);
@@ -18,9 +20,20 @@ class SettingsScreen extends React.Component {
   render() {
 
     return (
-      <SimpleForm />
+      <View style={styles.container}>
+        <CreateEventHeader/>
+        <VisibleForm/>
+      </View>
+      
     );
   }
 }
 
 export default SettingsScreen;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+  }
+});

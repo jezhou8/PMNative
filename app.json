@@ -23,7 +23,11 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSPhotoLibraryUsageDescription": "This app uses the camera to scan barcodes on event tickets.",
+        "NSCameraUsageDescription": "This app uses the camera to scan barcodes on event tickets."
+      }
     }
   }
 }

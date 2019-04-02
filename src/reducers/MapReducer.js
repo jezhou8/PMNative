@@ -1,39 +1,40 @@
-import { Permissions } from 'expo';
+import { FETCH_LOCATION_PENDING, FETCH_LOCATION_FULFILLED, FETCH_LOCATION_REJECTED } from '../actions/actionTypes';
 
 const initialState = {
-        isFetching: false,
         lastUpdated: 0,
-        coords: { latitude: 37.3318, 
-                longitude: -122.0312,
-                latitudeDelta: 0.00922,
-                longitudeDelta: 0.00421,},
-        car: {name: "NIG"}
+        coords: { latitude: 37.78825, 
+                longitude: -122.4324,},
+        latitudeDelta: 0.0041267,
+        longitudeDelta: 0.0041267,
+        isFetching: false,
+        error: false,
+        dataFetched: false,
 };
 
-const getLocationAsync = async () => {
-        let { status } = await Permissions.askAsync(Permissions.LOCATION);
-    
-        if (status === 'granted') {
-            console.log('Approved!');
-            return Location.getCurrentPositionAsync({ enableHighAccuracy: false });
-        } else {
-           console.log('Rejected!');
-           throw new Error('Location permission not granted');
-        }
-}
 
-const location = (state=initialState, action) => {
-        //console.log(initialState.location);
+export default function mapReducer (state=initialState, action) {
         switch (action.type) {
-                case 'SET_DEFAULT_LOCATION':
+                case FETCH_LOCATION_PENDING: 
                         return {
-                                latitude: getLocationAsync().latitude,
-                                longitude: getLocationAsync().longitude,
+                                ...state,
+                                coords: initialState.coords,
+                                isFetching: true
+                        }
+                case FETCH_LOCATION_FULFILLED:
+                        return {
+                                ...state,
+                                isFetching: false,
+                                coords: action.payload
+                        }
+                case FETCH_LOCATION_REJECTED:
+                        alert("rejected");
+                        return {
+                                ...state,
+                                isFetching: false,
+                                error: true
                         }
                 default:
                         return state;
         }
         
 }
-
-export default location;

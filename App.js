@@ -5,6 +5,8 @@ import AppNavigator from './navigation/AppNavigator';
 
 import { Provider } from 'react-redux';
 import store from './src/store';
+import { Constants, Location, Permissions } from 'expo';
+
 
 export default class App extends React.Component {
   state = {
@@ -49,6 +51,15 @@ export default class App extends React.Component {
     ]);
   };
 
+  _requestLocationPermission = async () => {
+    let { status } = await Permissions.askAsync(Permissions.LOCATION);
+    if (status !== 'granted') {
+      this.setState({
+        errorMessage: 'Permission to access location was denied',
+      });
+    }
+  }
+
   _handleLoadingError = error => {
     // In this case, you might want to report the error to your error
     // reporting service, for example Sentry
@@ -57,7 +68,7 @@ export default class App extends React.Component {
 
   _handleFinishLoading = () => {
     this.setState({ isLoadingComplete: true });
-    //this._getLocationAsync();
+    this._requestLocationPermission();
   };  
   
 }
