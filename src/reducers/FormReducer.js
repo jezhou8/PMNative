@@ -1,10 +1,10 @@
 import { CLEAR_FORM, FORM_DATA_CHANGED } from '../actions/actionTypes';
 
 const initialState = {
-        EventName: 'Hello!',
+        EventName: '',
         EventLocation: '',
         Mood: '',
-        Image: 'testloc',
+        Image: undefined,
     };
 
 const formData = (state = initialState, action) => {

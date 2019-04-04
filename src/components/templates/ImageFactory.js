@@ -61,7 +61,7 @@ class ImageFactory extends Component<Props, State> {
           allowsEditing: true,
           aspect: [16, 9],});
         if (!result.cancelled) {
-          this._getImageFromStorage(result.uri)
+          this._getImageFromStorage(result.uri);
         }
       } else {
         throw new Error('Location permission not granted');
@@ -140,9 +140,7 @@ class ImageFactory extends Component<Props, State> {
   };
 
   _getImageFromStorage = (path: string) => {
-    this.setState({ image: path, overflow: 'hidden' }, () =>
-      this._startAnimation()
-    );
+    this.setState({ image: path });
     super.getLocals().onChange(path);
   };
 
@@ -168,6 +166,7 @@ class ImageFactory extends Component<Props, State> {
         locals.config && locals.config.buttonTextColor
           ? locals.config.buttonTextColor
           : '#fff';
+
 
       if (locals.hasError) {
         controlLabelStyle = stylesheet.controlLabel.error;
@@ -217,8 +216,8 @@ class ImageFactory extends Component<Props, State> {
                   ? this._onPressImage
                   : () => this.bottomSheet.open()
               }>
-              {this.state.image &&
-              <Image source={{ uri: this.state.image }} style={{ width: 200, height: 200 }} />}
+              {super.getLocals().value &&
+              <Image source={{ uri: super.getLocals().value }} style={{ width: 200, height: 200 }} />}
               <SimpleLineIcons
                 name={'camera'}
                 size={28}

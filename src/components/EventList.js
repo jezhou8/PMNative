@@ -1,12 +1,11 @@
 import React from "react";
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
-import { STOCK_EVENT } from '../img';
 
 const EventList = ({events}) => (
         events.map( event =>
         <View style={styles.container} key={event.key} >
                 <TouchableOpacity style={styles.button} onPress={()=>{}}>
-                        <Image style={styles.eventImage} source={{ uri: event.Image }}/>
+                        {event.Image && <Image style={styles.eventImage} source={{ uri: event.Image }}/>}
                         <Text>{event.name}</Text>
                         <Text>{"\n"}</Text>
                         {/*{event.imageUri && <Image source={{ uri: event.imageUri }}/>}*/}
@@ -43,13 +42,6 @@ const styles = StyleSheet.create({
                 shadowOpacity: 0.8,
                 shadowRadius: 2,
                 elevation: 1,
-        },
-        countContainer: {
-                alignItems: 'center',
-                padding: 10
-        },
-        countText: {
-                color: '#FF00FF'
         },
         eventImage: {
                 marginLeft: 10,

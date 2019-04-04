@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-import { View, Text, TextInput, Button, StyleSheet, TouchableOpacity } from 'react-native';
+import { ScrollView ,View, Text, TextInput, Button, StyleSheet, TouchableOpacity } from 'react-native';
 import ImageFactory from './templates/ImageFactory';
 
 import t from 'tcomb-form-native';
@@ -19,8 +19,8 @@ const Event = t.struct({
 const formStyles = _.cloneDeep(t.form.Form.stylesheet);
 formStyles.textbox.normal.marginBottom = 20;
 formStyles.textbox.normal.fontSize = 17;
-formStyles.textbox.normal.backgroundColor = '#454F63';
-formStyles.textbox.normal.color = '#ffffff';
+formStyles.textbox.normal.backgroundColor = '#fff';
+formStyles.textbox.normal.color = '#454F63';
 formStyles.textbox.normal.borderRadius = 8;
 formStyles.textbox.normal.height = 50;
 formStyles.textbox.error.marginBottom = 20;
@@ -32,7 +32,7 @@ formStyles.textbox.error.height = 50;
 
 const placeholderTextColor = '#959DAD';
 
-const options = {
+var options = {
 
   auto: 'placeholders',
   stylesheet: formStyles,
@@ -57,7 +57,8 @@ const options = {
               // Used on Android to style BottomSheet
               style: {
                 titleFontFamily: 'Roboto'
-              }
+              },
+              imageUri: undefined,
             },
             error: 'No image provided',
             factory: ImageFactory
@@ -67,7 +68,6 @@ const options = {
 
 const styles = StyleSheet.create({
   container: {
-    justifyContent: 'center',
     padding: 20,
     backgroundColor: '#ffffff',
   },
@@ -88,6 +88,40 @@ const styles = StyleSheet.create({
 
 export default class SimpleForm extends Component {
 
+  options = {
+
+    auto: 'placeholders',
+    stylesheet: formStyles,
+            
+    fields: { // <= Event options
+            EventName: {
+              placeholderTextColor: placeholderTextColor
+            },
+            EventLocation: {
+              placeholderTextColor: placeholderTextColor
+            },
+            Mood: {
+              placeholderTextColor: placeholderTextColor
+            },
+            Requests: {
+              placeholderTextColor: placeholderTextColor
+            },
+            Image: {
+              config: {
+                title: 'Select image',
+                options: ['Open Camera', 'Select from gallery', 'Cancel'],
+                // Used on Android to style BottomSheet
+                style: {
+                  titleFontFamily: 'Roboto'
+                },
+                //onChange: thisp
+              },
+              error: 'No image provided',
+              factory: ImageFactory
+            }
+    }
+  }
+  
   constructor(props) {
     super(props);
   }
@@ -99,12 +133,13 @@ export default class SimpleForm extends Component {
       longitude: this.props.location.coords.longitude
     }
     this.props.createEvent(data)
+    this.props.clearForm();
   }
 
   render() {
     return (
-      <View style={styles.container}>
-      <Form ref={c => this._form = c} type={Event} value={this.props.formData} onChange={this.props.onFormDataChange} options={options}/>
+      <ScrollView style={styles.container} contentContainerStyle={{justifyContent: 'center'}}>
+      <Form ref={c => this._form = c} type={Event} value={this.props.formData} onChange={this.props.onFormDataChange} options={this.options}/>
       <TouchableOpacity
         title="Create!"
         onPress={()=>this.handleSubmit(this.props.formData)}
@@ -113,8 +148,8 @@ export default class SimpleForm extends Component {
         <Text style={{color: '#fff'}}>Create Event</Text>
       </TouchableOpacity>
       <Button color='#f00' title="Clear" onPress={this.props.clearForm}></Button>
-    </View>
-    )
+    </ScrollView>
+    ) 
   }
 }
 
