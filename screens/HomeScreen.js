@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 
 import VisibleEvents from '../src/container/VisibleEvents';
-import EventHeader from '../src/components/EventHeader';
+import EventHeader from '../src/components/EventsListComponents/EventHeader';
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
