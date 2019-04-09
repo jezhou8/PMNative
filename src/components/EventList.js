@@ -8,9 +8,6 @@ const EventList = ({events}) => (
                         {event.Image && <Image style={styles.eventImage} source={{ uri: event.Image }}/>}
                         <Text>{event.name}</Text>
                         <Text>{"\n"}</Text>
-                        {/*{event.imageUri && <Image source={{ uri: event.imageUri }}/>}*/}
-                
-                        
                 </TouchableOpacity>  
         </View>
         )
@@ -37,7 +34,7 @@ const styles = StyleSheet.create({
                 borderRadius: 4,
                 borderWidth: 2,
                 borderColor: '#ddd',
-                shadowColor: '#222',
+                shadowColor: '#ccc',
                 shadowOffset: { width: 0, height: 2 },
                 shadowOpacity: 0.8,
                 shadowRadius: 2,

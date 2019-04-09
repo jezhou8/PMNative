@@ -4,7 +4,7 @@ import {
   View,
 } from 'react-native';
 
-import CreateEventHeader from '../src/components/CreateEventHeader';
+import CreateEventHeader from '../src/components/FormComponents/CreateEventHeader';
 import VisibleForm from '../src/container/VisibleForm';
 
 class SettingsScreen extends React.Component {

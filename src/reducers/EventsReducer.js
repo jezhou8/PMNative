@@ -22,14 +22,14 @@ const events = (state = initialState, action) => {
         switch (action.type) {
                 case CREATE_EVENT:
                         return [
-                                ...state,
                                 {
                                         key: key++,
                                         name: action.payload.EventName,
                                         latitude: action.payload.latitude,
                                         longitude: action.payload.longitude,
                                         Image: action.payload.Image
-                                }
+                                },
+                                ...state
                         ]
                 
                 default:
