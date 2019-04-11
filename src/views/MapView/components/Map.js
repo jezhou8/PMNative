@@ -1,7 +1,6 @@
 import React from "react";
 import { View } from 'react-native';
 import { MapView } from 'expo';
-import EventsListCard from "./EventsListCard";
 
 class Map extends React.Component {
 

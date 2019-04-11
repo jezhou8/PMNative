@@ -1,4 +1,4 @@
-import { FETCH_LOCATION, CREATE_EVENT, FORM_DATA_CHANGED, CLEAR_FORM, EXPAND_CARD} from './actionTypes';
+import { FETCH_LOCATION, CREATE_EVENT, FORM_DATA_CHANGED, CLEAR_FORM, EXPAND_CARD} from './ActionTypes';
 import { Location } from 'expo';
 
 function getLocationAsync (){

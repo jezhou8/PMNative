@@ -90,7 +90,7 @@ class EventsListCard extends React.Component {
     render () {
         const realHeight = this.heightValue.interpolate({
             inputRange: [0, 1],
-            outputRange: ['40%', '85%']
+            outputRange: ['10%', '45%']
         }); 
 
         return (

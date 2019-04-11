@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react';
 import { ScrollView ,View, Text, TextInput, Button, StyleSheet, TouchableOpacity } from 'react-native';
-import ImageFactory from './templates/ImageFactory';
+import ImageFactory from './ImageFactory';
 
 import t from 'tcomb-form-native';
 

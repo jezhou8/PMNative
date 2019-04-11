@@ -1,4 +1,4 @@
-import { FETCH_LOCATION_PENDING, FETCH_LOCATION_FULFILLED, FETCH_LOCATION_REJECTED } from '../actions/actionTypes';
+import { FETCH_LOCATION_PENDING, FETCH_LOCATION_FULFILLED, FETCH_LOCATION_REJECTED } from '../actions/ActionTypes';
 
 const initialState = {
         lastUpdated: 0,

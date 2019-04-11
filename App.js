@@ -4,7 +4,7 @@ import { AppLoading, Asset, Font, Icon } from 'expo';
 import AppNavigator from './navigation/AppNavigator';
 
 import { Provider } from 'react-redux';
-import store from './src/store';
+import store from './src/redux/store';
 import { Constants, Location, Permissions } from 'expo';
 
 

@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
-import SimpleForm from '../components/CreateEventForm';
-import {createEvent, clearForm, onFormDataChange} from '../actions';
+import SimpleForm from '../components/Form';
+import {createEvent, clearForm, onFormDataChange} from '../../../redux/actions';
 
 const mapStateToProps = state => ({
     location: state.location,
