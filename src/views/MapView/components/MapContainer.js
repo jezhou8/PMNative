@@ -1,8 +1,9 @@
 import React from "react";
 import { View } from 'react-native';
-import EventsListCard from './MapComponents/EventsListCard';
-import Map from './MapComponents/Map';
-import EventsSearch from './MapComponents/EventsSearch'
+import EventsListCard from './Card';
+import Map from './Map';
+import EventsSearch from './SearchBar';
+
 const EventMap = (props) => {
   const { location, events, setDefaultLocation, cardState, expandCard } = props;
   return (

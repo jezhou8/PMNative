@@ -12,6 +12,7 @@ const initialState = [
                 name: 'Name1',
                 latitude: 40.1149,
                 longitude: -88.2296,
+
                 Image: "https://facebook.github.io/react-native/docs/assets/favicon.png"}
 ];
 

@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
-import EventMap from '../components/EventMap';
-import {setDefaultLocation, expandCard} from '../actions';
+import EventMap from '../components/MapContainer';
+import {setDefaultLocation, expandCard} from '../../../redux/actions';
 
 const mapStateToProps = (state) =>{
     return {

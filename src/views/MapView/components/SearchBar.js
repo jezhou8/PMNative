@@ -2,8 +2,8 @@ import { SearchBar } from 'react-native-elements';
 
 
 import React from 'react';
-import { View, Text, Image, TouchableOpacity, ScrollView, Animated, Easing} from 'react-native';
-import { Icon, Divider } from 'react-native-elements';
+import { View } from 'react-native';
+
 
 class EventsSearch extends React.Component {
 

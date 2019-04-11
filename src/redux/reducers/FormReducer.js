@@ -1,4 +1,4 @@
-import { CLEAR_FORM, FORM_DATA_CHANGED } from '../actions/actionTypes';
+import { CLEAR_FORM, FORM_DATA_CHANGED } from '../actions/ActionTypes';
 
 const initialState = {
         EventName: '',
@@ -12,7 +12,6 @@ const formData = (state = initialState, action) => {
             case CLEAR_FORM:
                     return initialState;
             case FORM_DATA_CHANGED:
-                    console.log(action.payload)
                     return action.payload;
             default:
                     return state;
