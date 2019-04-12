@@ -1,8 +1,17 @@
 import {connect} from 'react-redux';
-import EventList from '../components/List';
+import ViewContainer from '../components/ViewContainer';
+import { setSelectedEvent, expandCard } from '../../../redux/actions';
 
 const mapStateToProps = state => ({
         events: state.events
 })
 
-export default connect(mapStateToProps)(EventList);
+const mapDispatchToProps = dispatch => {
+        return {
+          setSelectedEvent: (event) => dispatch(setSelectedEvent(event)),
+          expandCard: () => dispatch(expandCard()),
+        }
+    }
+      
+
+export default connect(mapStateToProps, mapDispatchToProps)(ViewContainer);

@@ -5,12 +5,12 @@ import Map from './Map';
 import EventsSearch from './SearchBar';
 
 const EventMap = (props) => {
-  const { location, events, setDefaultLocation, cardState, expandCard } = props;
+  const { location, events, setDefaultLocation, cardState, expandCard, hideCard, setSelectedEvent } = props;
   return (
     <View style={styles.container}>
-          <Map location={location} events={events} setDefaultLocation={setDefaultLocation}/>
-          <EventsSearch />
-          <EventsListCard events={events} expandCard={expandCard} cardState={cardState}/>
+          <Map location={location} setSelectedEvent={setSelectedEvent} events={events} setDefaultLocation={setDefaultLocation}/>
+          <EventsSearch />  
+          <EventsListCard events={events} expandCard={expandCard} hideCard={hideCard} cardState={cardState}/>
     </View>
   )
 }

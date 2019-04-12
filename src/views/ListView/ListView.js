@@ -10,7 +10,6 @@ import {
 } from 'react-native';
 
 import VisibleEvents from './containers/ConnectToStore';
-import EventHeader from './components/Header';
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -19,12 +18,7 @@ export default class HomeScreen extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <EventHeader/>
-        <ScrollView contentContainerStyle={styles.contentContainer}>
-          <VisibleEvents/>
-        </ScrollView>
-      </View>
+      <VisibleEvents navigation={this.props.navigation}/>
     );
   }
 }

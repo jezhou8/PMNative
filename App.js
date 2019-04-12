@@ -7,7 +7,6 @@ import { Provider } from 'react-redux';
 import store from './src/redux/store';
 import { Constants, Location, Permissions } from 'expo';
 
-
 export default class App extends React.Component {
   state = {
     isLoadingComplete: false,

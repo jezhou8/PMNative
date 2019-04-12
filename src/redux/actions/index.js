@@ -1,5 +1,6 @@
-import { FETCH_LOCATION, CREATE_EVENT, FORM_DATA_CHANGED, CLEAR_FORM, EXPAND_CARD} from './ActionTypes';
+import { FETCH_LOCATION, CREATE_EVENT, FORM_DATA_CHANGED, CLEAR_FORM, EXPAND_CARD, HIDE_CARD, LOAD_CARD_DATA} from './ActionTypes';
 import { Location } from 'expo';
+import { ActionSheetIOS } from 'react-native';
 
 function getLocationAsync (){
        return new Promise((resolve, reject) => {
@@ -40,8 +41,21 @@ export function clearForm() {
         }
 }
 
-export function expandCard(callback) {
+export function expandCard() {
         return {
                 type: EXPAND_CARD,
+        }
+}
+
+export function hideCard() {
+        return {
+                type: HIDE_CARD,
+        }
+}
+
+export function setSelectedEvent(event) {
+        return {
+                type: LOAD_CARD_DATA,
+                payload: event
         }
 }

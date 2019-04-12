@@ -13,6 +13,9 @@ class Map extends React.Component {
         this.props.setDefaultLocation();
     }
     
+    onMarkerPress = (event) => {
+      this.props.setSelectedEvent(event);
+    }
 
     render() {
         let loc = this.props.location;
@@ -37,6 +40,7 @@ class Map extends React.Component {
                 }}
                 title={event.name}
                 description={"asdfasdf"}
+                onPress={e => this.onMarkerPress(event)}
                 />);
             
         })}

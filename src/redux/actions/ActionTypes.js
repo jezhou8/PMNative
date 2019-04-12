@@ -14,4 +14,5 @@ export const FORM_DATA_CHANGED = 'FORM_DATA_CHANGED';
 export const CLEAR_FORM = 'CLEAR_FORM';
 
 export const EXPAND_CARD = 'EXPAND_CARD';
-export const LOAD_CONST_DATAa = 'LOAD_CARD_DATA';
+export const HIDE_CARD = 'HIDE_CARD';
+export const LOAD_CARD_DATA = 'LOAD_CARD_DATA';

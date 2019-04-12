@@ -3,7 +3,7 @@ import SimpleForm from '../components/Form';
 import {createEvent, clearForm, onFormDataChange} from '../../../redux/actions';
 
 const mapStateToProps = state => ({
-    location: state.location,
+    location: state.map,
     formData: state.formData
 })
 

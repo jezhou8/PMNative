@@ -1,17 +1,31 @@
 import React from "react";
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 
-const EventList = ({events}) => (
-        events.map( event =>
-        <View style={styles.container} key={event.key} >
-                <TouchableOpacity style={styles.button} onPress={()=>{}}>
-                        {event.Image && <Image style={styles.eventImage} source={{ uri: event.Image }}/>}
-                        <Text>{event.name}</Text>
-                        <Text>{"\n"}</Text>
-                </TouchableOpacity>  
-        </View>
-        )
-);
+
+class EventList extends React.Component {
+
+        constructor(props) {
+                super(props);
+        }
+
+        onPress = (event) => {
+                this.props.setSelectedEvent(event);
+                this.props.expandCard();
+                this.props.navigation.navigate('Links');
+        }
+
+        render() {
+                const events = this.props.events;
+                return (events.map( event =>
+                        <View style={styles.container} key={event.key} >
+                                <TouchableOpacity style={styles.button} event={event} onPress={() => this.onPress(event)}>
+                                        {event.Image && <Image style={styles.eventImage} source={{ uri: event.Image }}/>}
+                                        <Text>{event.name}</Text>
+                                        <Text>{"\n"}</Text>
+                                </TouchableOpacity>  
+                        </View>));
+        }
+}
 
 export default EventList;
 

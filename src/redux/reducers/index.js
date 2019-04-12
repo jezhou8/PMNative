@@ -1,14 +1,12 @@
 import {combineReducers} from 'redux';
-import location from './MapReducer';
+import map from './MapReducer';
 import events from './EventsReducer';
 import formData from './FormReducer';
-import cardData from './MapCardReducer';
 
 const rootReducer = combineReducers({
-        location,
+        map,
         events,
         formData,
-        cardData,
 });
 
 export default rootReducer;

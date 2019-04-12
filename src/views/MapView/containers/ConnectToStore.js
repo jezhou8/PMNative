@@ -1,19 +1,21 @@
 import {connect} from 'react-redux';
 import EventMap from '../components/MapContainer';
-import {setDefaultLocation, expandCard} from '../../../redux/actions';
+import {setDefaultLocation, setSelectedEvent, expandCard, hideCard} from '../../../redux/actions';
 
 const mapStateToProps = (state) =>{
     return {
-      location: state.location,
+      location: state.map,
       events: state.events,
-      cardState: state.cardData,
+      cardState: state.map.cardData,
     }
   }
   
 const mapDispatchToProps = dispatch => {
     return {
       setDefaultLocation: () => dispatch(setDefaultLocation()),
-      expandCard: () => dispatch(expandCard())
+      setSelectedEvent: (event) => dispatch(setSelectedEvent(event)),
+      expandCard: () => dispatch(expandCard()),
+      hideCard: () => dispatch(hideCard())
     }
 }
   
