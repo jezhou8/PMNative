@@ -1,7 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 
-
 class EventList extends React.Component {
 
         constructor(props) {
@@ -32,10 +31,10 @@ export default EventList;
 const styles = StyleSheet.create({
         container: {
                 width: '90%',
+                alignSelf: 'center',
                 justifyContent: 'center',
                 color: '#fff',
                 height: 70,
-                marginTop: 5,
                 marginBottom: 10,
         },
         button: {
