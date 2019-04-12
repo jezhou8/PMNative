@@ -15,6 +15,7 @@ class Map extends React.Component {
     
     onMarkerPress = (event) => {
       this.props.setSelectedEvent(event);
+      this.props.expandCard();
     }
 
     render() {

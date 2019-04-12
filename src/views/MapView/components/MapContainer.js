@@ -8,7 +8,7 @@ const EventMap = (props) => {
   const { location, events, setDefaultLocation, cardState, expandCard, hideCard, setSelectedEvent } = props;
   return (
     <View style={styles.container}>
-          <Map location={location} setSelectedEvent={setSelectedEvent} events={events} setDefaultLocation={setDefaultLocation}/>
+          <Map location={location} setSelectedEvent={setSelectedEvent} expandCard={expandCard} events={events} setDefaultLocation={setDefaultLocation}/>
           <EventsSearch />  
           <EventsListCard events={events} expandCard={expandCard} hideCard={hideCard} cardState={cardState}/>
     </View>
