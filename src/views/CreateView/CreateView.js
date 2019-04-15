@@ -1,39 +1,34 @@
-import React from 'react';
-import {
-  StyleSheet,
-  View,
-} from 'react-native';
+import React from "react";
+import { StyleSheet, View } from "react-native";
 
-import CreateEventHeader from './components/Header';
-import VisibleForm from './containers/ConnectToStore';
+import CreateEventHeader from "./components/Header";
+import VisibleForm from "./containers/ConnectToStore";
 
 class SettingsScreen extends React.Component {
-  static navigationOptions = {
-    header: null,
-  };
-  
-  submit = (values) => {
-    // print the form values to the console
-    console.log(values);
-  }
+	static navigationOptions = {
+		header: null,
+	};
 
-  render() {
+	submit = values => {
+		// print the form values to the console
+		console.log(values);
+	};
 
-    return (
-      <View style={styles.container}>
-        <CreateEventHeader/>
-        <VisibleForm/>
-      </View>
-      
-    );
-  }
+	render() {
+		return (
+			<View style={styles.container}>
+				<CreateEventHeader />
+				<VisibleForm />
+			</View>
+		);
+	}
 }
 
 export default SettingsScreen;
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  }
+	container: {
+		flex: 1,
+		backgroundColor: "#fff",
+	},
 });
