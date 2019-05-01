@@ -1,75 +1,50 @@
 import React from "react";
 import {
 	View,
-	Text,
-	TextInput,
+	Animated,
 	StyleSheet,
+	Easing,
 	TouchableOpacity,
 	ScrollView,
 } from "react-native";
 import { Icon, SearchBar } from "react-native-elements";
 
-const EventHeader = () => (
-	<View style={styles.container}>
-		<SearchBar
-			lightTheme
-			placeholder='Search'
-			inputContainerStyle={styles.searchInputContainer}
-			containerStyle={styles.searchBarContainer}
-		/>
-		<ScrollView
-			horizontal={true}
-			style={styles.filterBar}
-			contentContainerStyle={styles.filterBar}
-			showsHorizontalScrollIndicator={false}
-		>
-			<TouchableOpacity style={styles.filterButton} onPress={() => {}}>
-				<Text>Sports</Text>
-			</TouchableOpacity>
-			<TouchableOpacity style={styles.filterButton} onPress={() => {}}>
-				<Text>Food</Text>
-			</TouchableOpacity>
-			<TouchableOpacity style={styles.filterButton} onPress={() => {}}>
-				<Text>Chats</Text>
-			</TouchableOpacity>
-			<TouchableOpacity style={styles.filterButton} onPress={() => {}}>
-				<Text>Nightlife</Text>
-			</TouchableOpacity>
-			<TouchableOpacity style={styles.filterButton} onPress={() => {}}>
-				<Text>Category</Text>
-			</TouchableOpacity>
-			<TouchableOpacity style={styles.filterButton} onPress={() => {}}>
-				<Text>Time</Text>
-			</TouchableOpacity>
-			<TouchableOpacity style={styles.filterButton} onPress={() => {}}>
-				<Text>Etc</Text>
-			</TouchableOpacity>
-		</ScrollView>
-	</View>
-);
+class EventHeader extends React.Component {
+	constructor(props) {
+		super(props);
+	}
+
+	render() {
+		return (
+			<View style={styles.container}>
+				<SearchBar
+					lightTheme
+					placeholder='Search'
+					inputContainerStyle={styles.searchInputContainer}
+					containerStyle={styles.searchBarContainer}
+				/>
+			</View>
+		);
+	}
+}
 
 export default EventHeader;
 
 const styles = StyleSheet.create({
 	container: {
 		width: "100%",
-		height: "35%",
-		marginTop: 25,
-		marginBottom: 15,
+		height: "12%",
 		flexDirection: "column",
 		alignItems: "center",
 		justifyContent: "center",
 		backgroundColor: "#fff",
-		borderWidth: 0,
-		shadowColor: "#000",
-		shadowOffset: {
-			width: 0,
-			height: 4,
-		},
-		shadowOpacity: 0.12,
-		shadowRadius: 2.22,
-
-		elevation: 2,
+		borderBottomWidth: 1,
+		borderColor: "#ccc",
+		zIndex: 5,
+		paddingTop: 20,
+		top: 0,
+		left: 0,
+		right: 0,
 	},
 	searchInputContainer: {
 		borderWidth: 0,

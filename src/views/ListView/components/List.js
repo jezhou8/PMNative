@@ -1,6 +1,13 @@
 import React from "react";
-import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
-
+import {
+	View,
+	Text,
+	StyleSheet,
+	FlatList,
+	Image,
+	TouchableOpacity,
+} from "react-native";
+import emoji from "emoji-dictionary";
 class EventList extends React.Component {
 	constructor(props) {
 		super(props);
@@ -14,36 +21,61 @@ class EventList extends React.Component {
 
 	render() {
 		const events = this.props.events;
-		return events.map(event => (
-			<View style={styles.container} key={event.key}>
-				<TouchableOpacity
-					style={styles.button}
-					event={event}
-					onPress={() => this.onPress(event)}
-				>
-					{event.Image && (
-						<Image
-							style={styles.eventImage}
-							source={{ uri: event.Image }}
-						/>
+		return (
+			<View style={{ backgroundColor: "#aaa" }}>
+				<FlatList
+					data={events}
+					renderItem={event => (
+						<View style={styles.container} key={event.key}>
+							<TouchableOpacity
+								style={styles.button}
+								event={event}
+								onPress={() => this.onPress(event)}
+							>
+								<View style={styles.imageContainer}>
+									{event.Image && (
+										<Image
+											style={styles.eventImage}
+											source={{ uri: event.Image }}
+										/>
+									)}
+								</View>
+
+								<View style={styles.eventDescriptionContainer}>
+									<Text
+										style={{
+											color: "#f9f9f9",
+											fontWeight: "bold",
+										}}
+									>
+										{event.name}
+									</Text>
+									<Text style={styles.textColor}>
+										{"Grainger Library"}
+									</Text>
+								</View>
+							</TouchableOpacity>
+						</View>
 					)}
-					<Text>{event.name}</Text>
-					<Text>{"\n"}</Text>
-				</TouchableOpacity>
+					numColumns={2}
+				/>
 			</View>
-		));
+		);
 	}
 }
 
 export default EventList;
 
 const styles = StyleSheet.create({
+	textColor: {
+		color: "#FFFFFF",
+	},
 	container: {
-		width: "90%",
+		width: "45%",
 		alignSelf: "center",
 		justifyContent: "center",
 		color: "#fff",
-		height: 70,
+		height: 100,
 		marginBottom: 10,
 	},
 	button: {
@@ -53,7 +85,7 @@ const styles = StyleSheet.create({
 		alignItems: "center",
 		backgroundColor: "#fff",
 		padding: 0,
-		borderRadius: 4,
+		borderRadius: 2,
 		borderWidth: 1,
 		borderColor: "#ddd",
 		shadowColor: "#ccc",
@@ -62,11 +94,30 @@ const styles = StyleSheet.create({
 		shadowRadius: 2,
 		elevation: 1,
 	},
+	imageContainer: {
+		width: "40%",
+		height: "100%",
+		justifyContent: "center",
+	},
 	eventImage: {
-		marginLeft: 10,
-		marginRight: 10,
-		flex: 0.2,
-		height: "80%",
-		borderRadius: 4,
+		aspectRatio: 4 / 3,
+		height: "100%",
+		borderRadius: 2,
+		position: "absolute",
+	},
+	emojiContainer: {
+		backgroundColor: "#fff",
+		alignItems: "center",
+		justifyContent: "center",
+		marginLeft: 116,
+		width: 30,
+		height: 30,
+		borderRadius: 20,
+	},
+
+	eventDescriptionContainer: {
+		width: "55%",
+		height: "100%",
+		padding: 10,
 	},
 });
