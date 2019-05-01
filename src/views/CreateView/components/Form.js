@@ -11,7 +11,6 @@ import {
 import ImageFactory from "./ImageFactory";
 
 import t from "tcomb-form-native";
-import { string } from "prop-types";
 import { YELLOW } from "../../Colors";
 
 var _ = require("lodash");
