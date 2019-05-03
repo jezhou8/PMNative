@@ -64,7 +64,7 @@ export default function mapReducer(state = initialState, action) {
 				...state,
 				coords: {
 					longitude: action.payload.longitude,
-					latitude: action.payload.latitude,
+					latitude: action.payload.latitude - 0.0022,
 				},
 				cardData: {
 					...state.cardData,

@@ -14,9 +14,10 @@ import image0 from "../../../img/photo-0.png";
 import image1 from "../../../img/photo-1.png";
 import image2 from "../../../img/photo-2.png";
 import image3 from "../../../img/photo-3.png";
-import profile0 from "../../../img/profile-0.png";
-import profile1 from "../../../img/profile-1.png";
 import profile2 from "../../../img/profile-2.jpg";
+import profile3 from "../../../img/profile-3.jpg";
+import profile4 from "../../../img/profile-4.jpg";
+import profile5 from "../../../img/profile-5.jpg";
 
 class EventList extends React.Component {
 	constructor(props) {
@@ -29,7 +30,7 @@ class EventList extends React.Component {
 		this.props.navigation.navigate("Links");
 	};
 
-	generateRandomPicture = () => {
+	generateRandomEventPicture = () => {
 		let randNum = Math.floor(Math.random() * Math.floor(4));
 		switch (randNum) {
 			case 0:
@@ -80,7 +81,7 @@ class EventList extends React.Component {
 								) : (
 									<Image
 										style={styles.eventImage}
-										source={this.generateRandomPicture()}
+										source={this.generateRandomEventPicture()}
 									/>
 								)}
 
@@ -117,6 +118,26 @@ class EventList extends React.Component {
 									{event.attendees
 										.slice(0, 4)
 										.map(function(person, i) {
+											generateRandomProfilePicture = () => {
+												let randNum = Math.floor(
+													Math.random() *
+														Math.floor(4)
+												);
+												switch (randNum) {
+													case 0:
+														return profile2;
+													case 1:
+														return profile3;
+													case 2:
+														return profile4;
+													case 3:
+														return profile5;
+
+													default:
+														return profile4;
+												}
+											};
+
 											if (i == 3) {
 												return (
 													<Image
@@ -132,7 +153,7 @@ class EventList extends React.Component {
 															borderColor: WHITE,
 															top: 10,
 														}}
-														source={profile2}
+														source={this.generateRandomProfilePicture()}
 														zIndex={
 															event.attendees
 																.length - i
@@ -153,7 +174,7 @@ class EventList extends React.Component {
 														borderColor: WHITE,
 														top: 10,
 													}}
-													source={profile2}
+													source={this.generateRandomProfilePicture()}
 													zIndex={
 														event.attendees.length -
 														i
