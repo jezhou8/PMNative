@@ -9,6 +9,7 @@ const initialState = [
 		Image:
 			"https://facebook.github.io/react-native/docs/assets/favicon.png",
 		attendees: ["jerry", "leo", "jonathan", "john", "alex"],
+		startTime: "Now",
 	},
 	{
 		key: 1,

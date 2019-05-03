@@ -8,6 +8,7 @@ import {
 	TouchableOpacity,
 } from "react-native";
 import { LinearGradient } from "expo";
+import { RED, WHITE } from "../../Colors";
 
 import image0 from "../../../img/photo-0.png";
 import image1 from "../../../img/photo-1.png";
@@ -15,6 +16,7 @@ import image2 from "../../../img/photo-2.png";
 import image3 from "../../../img/photo-3.png";
 import profile0 from "../../../img/profile-0.png";
 import profile1 from "../../../img/profile-1.png";
+
 class EventList extends React.Component {
 	constructor(props) {
 		super(props);
@@ -86,6 +88,7 @@ class EventList extends React.Component {
 										right: 0,
 										top: 0,
 										height: "100%",
+										borderRadius: 5,
 									}}
 								/>
 
@@ -103,6 +106,7 @@ class EventList extends React.Component {
 									</Text>
 								</View>
 
+								{/* attendees profile images*/}
 								<View style={styles.attendees}>
 									{event.attendees
 										.slice(0, 4)
@@ -144,6 +148,18 @@ class EventList extends React.Component {
 											);
 										})}
 								</View>
+
+								{/* time badge */}
+								<View style={styles.timeBadge}>
+									<Text
+										style={{
+											color: WHITE,
+											fontWeight: "bold",
+										}}
+									>
+										Now
+									</Text>
+								</View>
 							</TouchableOpacity>
 						);
 					}}
@@ -182,11 +198,23 @@ const styles = StyleSheet.create({
 		alignSelf: "center",
 		width: "100%",
 		height: "100%",
-		borderRadius: 2,
+		borderRadius: 5,
 	},
 	eventDescriptionContainer: {
 		padding: 10,
 		position: "absolute",
 		bottom: 0,
+	},
+	timeBadge: {
+		backgroundColor: RED,
+		// width: 20,
+		// height: 10,
+		alignSelf: "baseline",
+		borderRadius: 3,
+		position: "absolute",
+		right: "7%",
+		bottom: "10%",
+		paddingRight: 5,
+		paddingLeft: 5,
 	},
 });
