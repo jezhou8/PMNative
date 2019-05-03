@@ -7,7 +7,14 @@ import {
 	Image,
 	TouchableOpacity,
 } from "react-native";
-import emoji from "emoji-dictionary";
+import { LinearGradient } from "expo";
+
+import image0 from "../../../img/photo-0.png";
+import image1 from "../../../img/photo-1.png";
+import image2 from "../../../img/photo-2.png";
+import image3 from "../../../img/photo-3.png";
+import profile0 from "../../../img/profile-0.png";
+import profile1 from "../../../img/profile-1.png";
 class EventList extends React.Component {
 	constructor(props) {
 		super(props);
@@ -17,6 +24,23 @@ class EventList extends React.Component {
 		this.props.setSelectedEvent(event);
 		this.props.expandCard();
 		this.props.navigation.navigate("Links");
+	};
+
+	generateRandomPicture = () => {
+		let randNum = Math.floor(Math.random() * Math.floor(4));
+		switch (randNum) {
+			case 0:
+				return image0;
+			case 1:
+				return image1;
+			case 2:
+				return image2;
+			case 3:
+				return image3;
+
+			default:
+				return image0;
+		}
 	};
 
 	render() {
@@ -30,45 +54,97 @@ class EventList extends React.Component {
 				}}
 			>
 				<FlatList
-					columnWrapperStyle={{ flexWrap: "wrap" }}
+					columnWrapperStyle={{
+						flex: 1,
+						justifyContent: "space-evenly",
+					}}
 					contentContainerStyle={styles.listContainer}
 					data={events}
 					renderItem={event => {
 						event = event.item;
 						return (
-							<View style={styles.container} key={event.key}>
-								<TouchableOpacity
-									style={styles.button}
-									event={event}
-									onPress={() => this.onPress(event)}
-								>
-									<View style={styles.imageContainer}>
-										{event.Image && (
-											<Image
-												style={styles.eventImage}
-												//source={{ uri: event.Image }}
-												source={require("../../../img/photo.png")}
-											/>
-										)}
-									</View>
+							<TouchableOpacity
+								style={styles.button}
+								event={event}
+								onPress={() => this.onPress(event)}
+							>
+								{
+									<Image
+										style={styles.eventImage}
+										//source={{ uri: event.Image }}
+										source={this.generateRandomPicture()}
+									/>
+								}
 
-									<View
-										style={styles.eventDescriptionContainer}
+								<LinearGradient
+									colors={["rgba(0,0,0,0.4)", "transparent"]}
+									start={{ x: 0.0, y: 0.0 }}
+									end={{ x: 0.7, y: 0.0 }}
+									style={{
+										position: "absolute",
+										left: 0,
+										right: 0,
+										top: 0,
+										height: "100%",
+									}}
+								/>
+
+								<View style={styles.eventDescriptionContainer}>
+									<Text
+										style={{
+											color: "#fff",
+											fontWeight: "bold",
+										}}
 									>
-										<Text
-											style={{
-												color: "#fff",
-												fontWeight: "bold",
-											}}
-										>
-											{event.name}
-										</Text>
-										<Text style={styles.textColor}>
-											{"Grainger Library"}
-										</Text>
-									</View>
-								</TouchableOpacity>
-							</View>
+										{event.name}
+									</Text>
+									<Text style={styles.textColor}>
+										{"Grainger Library"}
+									</Text>
+								</View>
+
+								<View style={styles.attendees}>
+									{event.attendees
+										.slice(0, 4)
+										.map(function(person, i) {
+											if (i == 3) {
+												return (
+													<Image
+														key={person}
+														style={{
+															position:
+																"absolute",
+															left: i * 13,
+															width: 64,
+															height: 64,
+														}}
+														source={profile1}
+														zIndex={
+															event.attendees
+																.length - i
+														}
+													/>
+												);
+											}
+											return (
+												<Image
+													key={person}
+													style={{
+														position: "absolute",
+														left: i * 12,
+														width: 64,
+														height: 64,
+													}}
+													source={profile0}
+													zIndex={
+														event.attendees.length -
+														i
+													}
+												/>
+											);
+										})}
+								</View>
+							</TouchableOpacity>
 						);
 					}}
 					numColumns={2}
@@ -84,42 +160,29 @@ const styles = StyleSheet.create({
 	textColor: {
 		color: "#FFFFFF",
 	},
+	attendees: { position: "absolute" },
 	container: {
-		width: 175,
+		width: "45%",
 		color: "#fff",
-		height: 135,
-		margin: 5,
+		height: 150,
 	},
 	listContainer: {
 		alignSelf: "center",
 		width: "100%",
 	},
 	button: {
-		flex: 1,
-		height: "100%",
-		backgroundColor: "#fff",
-		padding: 0,
-		borderRadius: 2,
-		borderWidth: 1,
-		borderColor: "#ddd",
-		shadowColor: "#ccc",
-		shadowOffset: { width: 0, height: 2 },
-		shadowOpacity: 0.8,
-		shadowRadius: 2,
-		elevation: 1,
-	},
-	imageContainer: {
-		width: "40%",
-		height: "100%",
-		justifyContent: "center",
+		//flex: 1,
+		aspectRatio: 4 / 3,
+		width: "48%",
+		marginBottom: 5,
+		// backgroundColor: "#f00",
+		// borderColor: "#ddd",
 	},
 	eventImage: {
-		aspectRatio: 4 / 3,
-		height: "100%",
+		alignSelf: "center",
+		flex: 1,
 		borderRadius: 2,
-		position: "absolute",
 	},
-
 	eventDescriptionContainer: {
 		padding: 10,
 		position: "absolute",

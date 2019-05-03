@@ -77,6 +77,7 @@ const styles = StyleSheet.create({
 	filterBar: {
 		flexDirection: "row",
 		alignSelf: "center",
+		margin: 5,
 	},
 	filterButton: {
 		width: "20%",

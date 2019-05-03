@@ -8,6 +8,7 @@ const initialState = [
 		longitude: -88.2266,
 		Image:
 			"https://facebook.github.io/react-native/docs/assets/favicon.png",
+		attendees: ["jerry", "leo", "jonathan", "john", "alex"],
 	},
 	{
 		key: 1,
@@ -17,6 +18,64 @@ const initialState = [
 
 		Image:
 			"https://facebook.github.io/react-native/docs/assets/favicon.png",
+		attendees: ["jerry", "leo"],
+	},
+	{
+		key: 2,
+		name: "Name3",
+		latitude: 40.1125,
+		longitude: -88.2266,
+		Image:
+			"https://facebook.github.io/react-native/docs/assets/favicon.png",
+		attendees: ["jerry", "john", "alex"],
+	},
+	{
+		key: 3,
+		name: "Name4",
+		latitude: 40.1149,
+		longitude: -88.2296,
+
+		Image:
+			"https://facebook.github.io/react-native/docs/assets/favicon.png",
+		attendees: ["jerry", "leo", "john", "alex"],
+	},
+	{
+		key: 4,
+		name: "Name5",
+		latitude: 40.1125,
+		longitude: -88.2266,
+		Image:
+			"https://facebook.github.io/react-native/docs/assets/favicon.png",
+		attendees: ["jerry"],
+	},
+	{
+		key: 5,
+		name: "Name6",
+		latitude: 40.1149,
+		longitude: -88.2296,
+
+		Image:
+			"https://facebook.github.io/react-native/docs/assets/favicon.png",
+		attendees: ["jerry", "leo"],
+	},
+	{
+		key: 6,
+		name: "Name7",
+		latitude: 40.1125,
+		longitude: -88.2266,
+		Image:
+			"https://facebook.github.io/react-native/docs/assets/favicon.png",
+		attendees: ["jerry", "leo", "alex", "john"],
+	},
+	{
+		key: 7,
+		name: "Name8",
+		latitude: 40.1149,
+		longitude: -88.2296,
+
+		Image:
+			"https://facebook.github.io/react-native/docs/assets/favicon.png",
+		attendees: ["jerry", "leo"],
 	},
 ];
 
@@ -33,6 +92,7 @@ const events = (state = initialState, action) => {
 					longitude: action.payload.longitude,
 					Image: action.payload.Image,
 					userId: "Jerry",
+					attendees: ["jerry", "leo", "jonathan", "john", "alex"],
 				},
 				...state,
 			];
