@@ -180,7 +180,8 @@ const styles = StyleSheet.create({
 	},
 	eventImage: {
 		alignSelf: "center",
-		flex: 1,
+		width: "100%",
+		height: "100%",
 		borderRadius: 2,
 	},
 	eventDescriptionContainer: {

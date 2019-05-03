@@ -65,6 +65,54 @@ const styles = StyleSheet.create({
 });
 
 export default class SimpleForm extends Component {
+	getDefaultStartTime() {
+		var date = new Date();
+		var hours = date.getHours();
+		var minutes = date.getMinutes() + 5;
+
+		if (minutes >= 60) {
+			minutes = minutes % 60;
+			hours++;
+		}
+		minutes = minutes < 10 ? "0" + minutes : minutes;
+
+		var ampm;
+		if (hours >= 24) {
+			hours = hours % 24;
+			ampm = "am";
+		} else {
+			ampm = hours >= 12 ? "pm" : "am";
+
+			hours = hours % 12;
+		}
+		hours = hours ? hours : 12; // the hour '0' should be '12'
+		var strTime = hours + ":" + minutes + " " + ampm;
+		return strTime;
+	}
+	getDefaultEndTime() {
+		var date = new Date();
+		var hours = date.getHours() + 2;
+		var minutes = date.getMinutes();
+
+		if (minutes >= 60) {
+			minutes = minutes % 60;
+			hours++;
+		}
+		minutes = minutes < 10 ? "0" + minutes : minutes;
+
+		var ampm;
+		if (hours >= 24) {
+			hours = hours % 24;
+			ampm = "am";
+		} else {
+			ampm = hours >= 12 ? "pm" : "am";
+
+			hours = hours % 12;
+		}
+		hours = hours ? hours : 12; // the hour '0' should be '12'
+		var strTime = hours + ":" + minutes + " " + ampm;
+		return strTime;
+	}
 	options = {
 		auto: "placeholders",
 		stylesheet: formStyles,
@@ -98,7 +146,7 @@ export default class SimpleForm extends Component {
 			},
 			StartTime: {
 				config: {
-					defaultValueText: "In 5 minutes",
+					defaultValueText: this.getDefaultStartTime(),
 					format: date => {
 						let hour = date.getHours();
 						let timeOfDay = hour > 12 ? "PM" : "AM";
@@ -107,12 +155,12 @@ export default class SimpleForm extends Component {
 						return String(hour + ":" + minutes + " " + timeOfDay);
 					},
 				},
-				mode: "date",
+				mode: "time",
 				label: "Start Time",
 			},
 			EndTime: {
 				config: {
-					defaultValueText: "2 hours from now",
+					defaultValueText: this.getDefaultEndTime(),
 					format: date => {
 						let hour = date.getHours();
 						let timeOfDay = hour > 12 ? "PM" : "AM";
@@ -121,7 +169,7 @@ export default class SimpleForm extends Component {
 						return String(hour + ":" + minutes + " " + timeOfDay);
 					},
 				},
-				mode: "date",
+				mode: "time",
 				label: "End Time",
 			},
 		},
