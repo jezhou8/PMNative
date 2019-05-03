@@ -71,13 +71,18 @@ class EventList extends React.Component {
 								event={event}
 								onPress={() => this.onPress(event)}
 							>
-								{
+								{event.Image !=
+								"https://facebook.github.io/react-native/docs/assets/favicon.png" ? (
 									<Image
 										style={styles.eventImage}
-										//source={{ uri: event.Image }}
+										source={{ uri: event.Image }}
+									/>
+								) : (
+									<Image
+										style={styles.eventImage}
 										source={this.generateRandomPicture()}
 									/>
-								}
+								)}
 
 								<LinearGradient
 									colors={["rgba(0,0,0,0.4)", "transparent"]}

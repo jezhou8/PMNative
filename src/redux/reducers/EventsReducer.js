@@ -78,9 +78,87 @@ const initialState = [
 			"https://facebook.github.io/react-native/docs/assets/favicon.png",
 		attendees: ["jerry", "leo"],
 	},
+
+	{
+		key: 8,
+		name: "Name2",
+		latitude: 40.1125,
+		longitude: -88.2266,
+		Image:
+			"https://facebook.github.io/react-native/docs/assets/favicon.png",
+		attendees: ["jerry", "leo", "jonathan", "john", "alex"],
+		startTime: "Now",
+	},
+	{
+		key: 9,
+		name: "Name1",
+		latitude: 40.1149,
+		longitude: -88.2296,
+
+		Image:
+			"https://facebook.github.io/react-native/docs/assets/favicon.png",
+		attendees: ["jerry", "leo"],
+	},
+	{
+		key: 10,
+		name: "Name3",
+		latitude: 40.1125,
+		longitude: -88.2266,
+		Image:
+			"https://facebook.github.io/react-native/docs/assets/favicon.png",
+		attendees: ["jerry", "john", "alex"],
+	},
+	{
+		key: 11,
+		name: "Name4",
+		latitude: 40.1149,
+		longitude: -88.2296,
+
+		Image:
+			"https://facebook.github.io/react-native/docs/assets/favicon.png",
+		attendees: ["jerry", "leo", "john", "alex"],
+	},
+	{
+		key: 12,
+		name: "Name5",
+		latitude: 40.1125,
+		longitude: -88.2266,
+		Image:
+			"https://facebook.github.io/react-native/docs/assets/favicon.png",
+		attendees: ["jerry"],
+	},
+	{
+		key: 13,
+		name: "Name6",
+		latitude: 40.1149,
+		longitude: -88.2296,
+
+		Image:
+			"https://facebook.github.io/react-native/docs/assets/favicon.png",
+		attendees: ["jerry", "leo"],
+	},
+	{
+		key: 16,
+		name: "Name7",
+		latitude: 40.1125,
+		longitude: -88.2266,
+		Image:
+			"https://facebook.github.io/react-native/docs/assets/favicon.png",
+		attendees: ["jerry", "leo", "alex", "john"],
+	},
+	{
+		key: 17,
+		name: "Name8",
+		latitude: 40.1149,
+		longitude: -88.2296,
+
+		Image:
+			"https://facebook.github.io/react-native/docs/assets/favicon.png",
+		attendees: ["jerry", "leo"],
+	},
 ];
 
-var key = 2;
+var key = 20;
 
 const events = (state = initialState, action) => {
 	switch (action.type) {

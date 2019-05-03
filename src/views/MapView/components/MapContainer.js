@@ -23,7 +23,6 @@ const EventMap = props => {
 				events={events}
 				setDefaultLocation={setDefaultLocation}
 			/>
-			<EventsSearch />
 			<EventsListCard
 				events={events}
 				expandCard={expandCard}

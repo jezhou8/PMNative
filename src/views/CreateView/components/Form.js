@@ -46,7 +46,7 @@ formStyles.textbox.error.height = 50;
 const placeholderTextColor = "#959DAD";
 const styles = StyleSheet.create({
 	container: {
-		padding: 20,
+		margin: 20,
 		backgroundColor: "#ffffff",
 	},
 	createEventButton: {
@@ -92,7 +92,7 @@ export default class SimpleForm extends Component {
 	getDefaultEndTime() {
 		var date = new Date();
 		var hours = date.getHours() + 2;
-		var minutes = date.getMinutes();
+		var minutes = date.getMinutes() + 5;
 
 		if (minutes >= 60) {
 			minutes = minutes % 60;
@@ -196,24 +196,23 @@ export default class SimpleForm extends Component {
 
 	render() {
 		return (
-			<ScrollView
-				style={styles.container}
-				contentContainerStyle={{ justifyContent: "center" }}
-			>
-				<Form
-					ref={c => (this._form = c)}
-					type={Event}
-					value={this.props.formData}
-					onChange={this.props.onFormDataChange}
-					options={this.options}
-				/>
-				<TouchableOpacity
-					title='Create!'
-					onPress={() => this.handleSubmit(this.props.formData)}
-					style={styles.createEventButton}
-				>
-					<Text style={{ color: "#fff" }}>Create Event</Text>
-				</TouchableOpacity>
+			<ScrollView>
+				<View style={styles.container}>
+					<Form
+						ref={c => (this._form = c)}
+						type={Event}
+						value={this.props.formData}
+						onChange={this.props.onFormDataChange}
+						options={this.options}
+					/>
+					<TouchableOpacity
+						title='Create!'
+						onPress={() => this.handleSubmit(this.props.formData)}
+						style={styles.createEventButton}
+					>
+						<Text style={{ color: "#fff" }}>Create Event</Text>
+					</TouchableOpacity>
+				</View>
 			</ScrollView>
 		);
 	}
