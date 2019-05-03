@@ -22,41 +22,55 @@ class EventList extends React.Component {
 	render() {
 		const events = this.props.events;
 		return (
-			<View style={{ backgroundColor: "#aaa" }}>
+			<View
+				style={{
+					justifyContent: "center",
+					height: "80%",
+					backgroundColor: "#fff",
+				}}
+			>
 				<FlatList
+					columnWrapperStyle={{ flexWrap: "wrap" }}
+					contentContainerStyle={styles.listContainer}
 					data={events}
-					renderItem={event => (
-						<View style={styles.container} key={event.key}>
-							<TouchableOpacity
-								style={styles.button}
-								event={event}
-								onPress={() => this.onPress(event)}
-							>
-								<View style={styles.imageContainer}>
-									{event.Image && (
-										<Image
-											style={styles.eventImage}
-											source={{ uri: event.Image }}
-										/>
-									)}
-								</View>
+					renderItem={event => {
+						event = event.item;
+						return (
+							<View style={styles.container} key={event.key}>
+								<TouchableOpacity
+									style={styles.button}
+									event={event}
+									onPress={() => this.onPress(event)}
+								>
+									<View style={styles.imageContainer}>
+										{event.Image && (
+											<Image
+												style={styles.eventImage}
+												//source={{ uri: event.Image }}
+												source={require("../../../img/photo.png")}
+											/>
+										)}
+									</View>
 
-								<View style={styles.eventDescriptionContainer}>
-									<Text
-										style={{
-											color: "#f9f9f9",
-											fontWeight: "bold",
-										}}
+									<View
+										style={styles.eventDescriptionContainer}
 									>
-										{event.name}
-									</Text>
-									<Text style={styles.textColor}>
-										{"Grainger Library"}
-									</Text>
-								</View>
-							</TouchableOpacity>
-						</View>
-					)}
+										<Text
+											style={{
+												color: "#fff",
+												fontWeight: "bold",
+											}}
+										>
+											{event.name}
+										</Text>
+										<Text style={styles.textColor}>
+											{"Grainger Library"}
+										</Text>
+									</View>
+								</TouchableOpacity>
+							</View>
+						);
+					}}
 					numColumns={2}
 				/>
 			</View>
@@ -71,18 +85,18 @@ const styles = StyleSheet.create({
 		color: "#FFFFFF",
 	},
 	container: {
-		width: "45%",
-		alignSelf: "center",
-		justifyContent: "center",
+		width: 175,
 		color: "#fff",
-		height: 100,
-		marginBottom: 10,
+		height: 135,
+		margin: 5,
+	},
+	listContainer: {
+		alignSelf: "center",
+		width: "100%",
 	},
 	button: {
 		flex: 1,
-		flexDirection: "row",
 		height: "100%",
-		alignItems: "center",
 		backgroundColor: "#fff",
 		padding: 0,
 		borderRadius: 2,
@@ -105,19 +119,10 @@ const styles = StyleSheet.create({
 		borderRadius: 2,
 		position: "absolute",
 	},
-	emojiContainer: {
-		backgroundColor: "#fff",
-		alignItems: "center",
-		justifyContent: "center",
-		marginLeft: 116,
-		width: 30,
-		height: 30,
-		borderRadius: 20,
-	},
 
 	eventDescriptionContainer: {
-		width: "55%",
-		height: "100%",
 		padding: 10,
+		position: "absolute",
+		bottom: 0,
 	},
 });

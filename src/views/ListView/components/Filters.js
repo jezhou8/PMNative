@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Animated, Picker, Easing, StyleSheet } from "react-native";
 import ModalDropdown from "react-native-modal-dropdown";
+import { YELLOW } from "../../Colors";
 
 class EventFilters extends React.Component {
 	state = { category: "" };
@@ -80,10 +81,8 @@ const styles = StyleSheet.create({
 	filterButton: {
 		width: "20%",
 		height: 30,
-		borderWidth: 1,
-		borderColor: "#ddd",
 		borderRadius: 8,
-		backgroundColor: "#fff",
+		backgroundColor: YELLOW,
 		justifyContent: "center",
 		alignItems: "center",
 		marginLeft: 5,
@@ -94,12 +93,8 @@ const styles = StyleSheet.create({
 		fontSize: 30,
 		fontWeight: "bold",
 	},
-	button: {
-		alignItems: "center",
-		backgroundColor: "#FFFFFF",
-		padding: 10,
-	},
 	optionsTextStyle: {
 		fontSize: 15,
+		color: "#fff",
 	},
 });
