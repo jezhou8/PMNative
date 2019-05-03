@@ -76,18 +76,17 @@ export default EventFilters;
 const styles = StyleSheet.create({
 	filterBar: {
 		flexDirection: "row",
-		alignSelf: "center",
+		justifyContent: "space-between",
+		alignItems: "center",
 		margin: 5,
 	},
 	filterButton: {
-		width: "20%",
+		width: "24%",
 		height: 30,
 		borderRadius: 8,
 		backgroundColor: YELLOW,
 		justifyContent: "center",
 		alignItems: "center",
-		marginLeft: 5,
-		marginRight: 5,
 		padding: 5,
 	},
 	headerText: {
@@ -96,6 +95,7 @@ const styles = StyleSheet.create({
 	},
 	optionsTextStyle: {
 		fontSize: 15,
+		fontWeight: "bold",
 		color: "#fff",
 	},
 });

@@ -3,11 +3,12 @@ import {
 	View,
 	Animated,
 	StyleSheet,
-	Easing,
+	Image,
 	TouchableOpacity,
-	ScrollView,
 } from "react-native";
 import { Icon, SearchBar } from "react-native-elements";
+import { getStatusBarHeight } from "react-native-status-bar-height";
+import profile2 from "../../../img/profile-2.jpg";
 
 class EventHeader extends React.Component {
 	constructor(props) {
@@ -17,6 +18,16 @@ class EventHeader extends React.Component {
 	render() {
 		return (
 			<View style={styles.container}>
+				<TouchableOpacity style={styles.profileImage}>
+					<Image
+						style={{
+							width: "100%",
+							height: "100%",
+							borderRadius: 5,
+						}}
+						source={profile2}
+					/>
+				</TouchableOpacity>
 				<SearchBar
 					lightTheme
 					placeholder='Search'
@@ -34,17 +45,18 @@ const styles = StyleSheet.create({
 	container: {
 		width: "100%",
 		height: "12%",
-		flexDirection: "column",
+		flex: 1,
+		flexDirection: "row",
 		alignItems: "center",
-		justifyContent: "center",
+		justifyContent: "space-evenly",
 		backgroundColor: "#fff",
 		borderBottomWidth: 1,
 		borderColor: "#ccc",
-		zIndex: 5,
-		paddingTop: 20,
-		top: 0,
-		left: 0,
-		right: 0,
+		paddingTop: getStatusBarHeight(),
+	},
+	profileImage: {
+		aspectRatio: 1,
+		width: "10%",
 	},
 	searchInputContainer: {
 		borderWidth: 0,
@@ -55,26 +67,8 @@ const styles = StyleSheet.create({
 		backgroundColor: "transparent",
 		borderBottomColor: "transparent",
 		borderTopColor: "transparent",
-		width: "90%",
-	},
-	filterBarContent: {
-		justifyContent: "flex-start",
-	},
-	filterBar: {
-		height: "60%",
-		flexDirection: "row",
-		marginTop: 2,
-		marginLeft: 5,
-	},
-	filterButton: {
-		height: 30,
-		justifyContent: "center",
-		borderWidth: 1,
-		borderColor: "#ddd",
-		borderRadius: 8,
-		padding: 5,
-		marginRight: 5,
-		backgroundColor: "#fff",
+		padding: 0,
+		width: "85%",
 	},
 	headerText: {
 		fontSize: 30,

@@ -43,34 +43,36 @@ class ImageFactory extends Component<Props, State> {
 		// permissions returns only for location permissions on iOS and under certain conditions, see Permissions.LOCATION
 		if (opt === 0) {
 			const { status, permissions } = await Permissions.askAsync(
-				Permissions.CAMERA
+				Permissions.CAMERA,
+				Permissions.CAMERA_ROLL
 			);
 			if (status === "granted") {
 				let result = await ImagePicker.launchCameraAsync({
 					allowsEditing: true,
-					aspect: [16, 9],
+					aspect: [4, 3],
 				});
 				if (!result.cancelled) {
 					this._getImageFromStorage(result.uri);
 				}
 			} else {
-				throw new Error("Location permission not granted");
+				throw new Error("Camera permission not granted");
 			}
 		}
 		if (opt === 1) {
 			const { status, permissions } = await Permissions.askAsync(
-				Permissions.CAMERA_ROLL
+				Permissions.CAMERA_ROLL,
+				Permissions.CAMERA
 			);
 			if (status === "granted") {
 				let result = await ImagePicker.launchImageLibraryAsync({
 					allowsEditing: true,
-					aspect: [16, 9],
+					aspect: [4, 3],
 				});
 				if (!result.cancelled) {
 					this._getImageFromStorage(result.uri);
 				}
 			} else {
-				throw new Error("Location permission not granted");
+				throw new Error("Camera Library permission not granted");
 			}
 		}
 	};
@@ -125,9 +127,7 @@ class ImageFactory extends Component<Props, State> {
 			{
 				title: options[0],
 				onPress: () =>
-					ImagePicker.openCamera({}).then((image: Object) =>
-						this._getImageFromStorage(image.path)
-					) && this.bottomSheet.close(),
+					this._getImageAsync(0) && this.bottomSheet.close(),
 				icon: (
 					<MaterialIcons
 						name={"photo-camera"}
@@ -139,9 +139,7 @@ class ImageFactory extends Component<Props, State> {
 			{
 				title: options[1],
 				onPress: () =>
-					ImagePicker.openPicker({}).then((image: Object) =>
-						this._getImageFromStorage(image.path)
-					) && this.bottomSheet.close(),
+					this._getImageAsync(1) && this.bottomSheet.close(),
 				icon: (
 					<MaterialIcons
 						name={"photo-library"}

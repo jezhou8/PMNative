@@ -16,6 +16,7 @@ import image2 from "../../../img/photo-2.png";
 import image3 from "../../../img/photo-3.png";
 import profile0 from "../../../img/profile-0.png";
 import profile1 from "../../../img/profile-1.png";
+import profile2 from "../../../img/profile-2.jpg";
 
 class EventList extends React.Component {
 	constructor(props) {
@@ -118,11 +119,15 @@ class EventList extends React.Component {
 														style={{
 															position:
 																"absolute",
-															left: i * 13,
-															width: 64,
-															height: 64,
+															left: 10 + i * 12,
+															width: 32,
+															height: 32,
+															borderRadius: 16,
+															borderWidth: 1,
+															borderColor: WHITE,
+															top: 10,
 														}}
-														source={profile1}
+														source={profile2}
 														zIndex={
 															event.attendees
 																.length - i
@@ -135,11 +140,15 @@ class EventList extends React.Component {
 													key={person}
 													style={{
 														position: "absolute",
-														left: i * 12,
-														width: 64,
-														height: 64,
+														left: 10 + i * 12,
+														width: 32,
+														height: 32,
+														borderRadius: 16,
+														borderWidth: 1,
+														borderColor: WHITE,
+														top: 10,
 													}}
-													source={profile0}
+													source={profile2}
 													zIndex={
 														event.attendees.length -
 														i
@@ -177,13 +186,7 @@ const styles = StyleSheet.create({
 		color: "#FFFFFF",
 	},
 	attendees: { position: "absolute" },
-	container: {
-		width: "45%",
-		color: "#fff",
-		height: 150,
-	},
 	listContainer: {
-		alignSelf: "center",
 		width: "100%",
 	},
 	button: {

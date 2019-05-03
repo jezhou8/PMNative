@@ -214,11 +214,6 @@ export default class SimpleForm extends Component {
 				>
 					<Text style={{ color: "#fff" }}>Create Event</Text>
 				</TouchableOpacity>
-				<Button
-					color='#f00'
-					title='Clear'
-					onPress={this.props.clearForm}
-				/>
 			</ScrollView>
 		);
 	}
