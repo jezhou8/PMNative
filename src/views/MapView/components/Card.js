@@ -11,83 +11,99 @@ import {
 	TextInput,
 } from "react-native";
 import { Icon, Divider } from "react-native-elements";
-
+import profile2 from "../../../img/profile-2.jpg";
+import chatIcon from "../../../img/icon-chat.png";
+import { YELLOW, WHITE, GRAY } from "../../Colors";
+import image0 from "../../../img/photo-0.png";
+import image1 from "../../../img/photo-1.png";
+import image2 from "../../../img/photo-2.png";
+import image3 from "../../../img/photo-3.png";
+import iconAttending from "../../../img/icon-attending.png";
 class EventsListCard extends React.Component {
 	constructor(props) {
 		super(props);
 	}
 
+	profileImages = [image0, image1, image2, image3];
+
 	styles = {
-		container: {
+		buttonContainer: {
+			height: "10%",
+			width: "100%",
+			flexDirection: "row",
+			justifyContent: "space-evenly",
+		},
+		chatButton: {
+			flex: 0.2,
+			backgroundColor: YELLOW,
+			borderRadius: 8,
+			justifyContent: "center",
+			alignItems: "center",
+		},
+		wrapper: {
 			flex: 1,
 			flexDirection: "column",
 			width: "100%",
-			padding: 0,
-			margin: 0,
 			position: "absolute",
-			justifyContent: "flex-start",
 			bottom: 0,
 			borderTopLeftRadius: 15,
 			borderTopWidth: 1,
 			borderColor: "#ddd",
 			borderTopRightRadius: 15,
-			shadowColor: "#ccc",
-			shadowOffset: { width: 0, height: -2 },
-			shadowOpacity: 0.5,
-			shadowRadius: 2,
-			backgroundColor: "#fff",
+			backgroundColor: WHITE,
 		},
-		selectedEvent: {
-			backgroundColor: "#fff",
-			margin: 0,
-			padding: 0,
-		},
-		expandCardArea: {
-			backgroundColor: "#fff",
+		collapseCardButton: {
 			width: "100%",
-			height: "100%",
+			height: "50%",
 			padding: 10,
-			margin: 0,
 			borderTopLeftRadius: 8,
 			borderTopRightRadius: 8,
 			borderColor: "#ddd",
 			justifyContent: "flex-start",
 		},
-		button: {
-			flexGrow: 1,
+		eventName: {
+			fontSize: 22,
+		},
+		profileButton: {
 			flexDirection: "row",
 			alignSelf: "center",
 			width: "100%",
-			height: 60,
+			height: "30%",
 			alignItems: "center",
 			backgroundColor: "#fff",
 			padding: 0,
 			borderColor: "#ddd",
+			justifyContent: "space-evenly",
 		},
-		eventImage: {
+		profileImage: {
 			marginLeft: 10,
 			marginRight: 10,
-			flex: 0.2,
-			height: "80%",
+			height: "100%",
+			width: undefined,
+			aspectRatio: 1,
 			borderRadius: 4,
 		},
 		rsvpButton: {
-			alignSelf: "center",
-			paddingLeft: 50,
-			paddingRight: 50,
-			paddingTop: 20,
-			paddingBottom: 20,
+			flex: 0.7,
+			alignItems: "center",
+			justifyContent: "center",
+			//height: "100%",
 			borderRadius: 8,
-			borderColor: "#000",
-			borderWidth: 1,
+			backgroundColor: YELLOW,
 		},
 		eventDescription: {
-			borderWidth: 1,
-			borderRadius: 8,
-			borderColor: "#000",
+			flex: 1,
 			marginTop: 10,
-			marginBottom: 10,
 		},
+		eventImage: {
+			aspectRatio: 4 / 3,
+			height: "100%",
+			width: undefined,
+			alignSelf: "stretch",
+			marginRight: 5,
+			borderRadius: 8,
+		},
+		attendingIcon: {},
 	};
 
 	heightValue = new Animated.Value(this.props.cardState.newCardHeight);
@@ -134,47 +150,123 @@ class EventsListCard extends React.Component {
 	render() {
 		const realHeight = this.heightValue.interpolate({
 			inputRange: [0, 1],
-			outputRange: ["0%", "45%"],
+			outputRange: ["0%", "60%"],
 		});
 
 		let { selectedEvent } = this.props.cardState;
 		return (
-			<Animated.View height={realHeight} style={this.styles.container}>
+			<Animated.View height={realHeight} style={this.styles.wrapper}>
 				{selectedEvent && (
-					<TouchableOpacity
-						activeOpacity={0.5}
-						style={this.styles.expandCardArea}
-						onPress={this.onPress}
-					>
-						<Icon name='ios-remove' type='ionicon' color='#ccc' />
-						<View style={this.styles.selectedEvent}>
+					<View style={{ width: "100%", height: "100%" }}>
+						<TouchableOpacity
+							activeOpacity={0.5}
+							style={this.styles.collapseCardButton}
+							onPress={this.onPress}
+						>
+							<Icon
+								name='ios-remove'
+								type='ionicon'
+								color='#ccc'
+							/>
+
+							{/* Profile images*/}
 							<TouchableOpacity
 								key={selectedEvent.key}
-								style={this.styles.button}
+								style={this.styles.profileButton}
 								onPress={() => {}}
 							>
-								{selectedEvent.Image && (
-									<Image
-										style={this.styles.eventImage}
-										source={{ uri: selectedEvent.Image }}
-									/>
-								)}
-								<Text>{selectedEvent.name}</Text>
-								<Text>{"\n"}</Text>
+								<Image
+									style={this.styles.profileImage}
+									source={profile2}
+								/>
+
+								<View style={{ width: "60%" }}>
+									<Text style={this.styles.eventName}>
+										{selectedEvent.name}
+									</Text>
+									<View
+										style={{
+											alignSelf: "baseline",
+											borderTopWidth: 1,
+										}}
+									>
+										<Text
+											style={{
+												color: "#000",
+											}}
+										>
+											206 E. Peabody Dr, Champaign IL
+										</Text>
+									</View>
+								</View>
+
+								<Image
+									style={this.styles.attendingIcon}
+									source={iconAttending}
+								/>
 							</TouchableOpacity>
 							<View style={this.styles.eventDescription}>
-								<Text style={{ padding: 10 }}>
+								<Text style={{ fontSize: 17, padding: 10 }}>
 									Id vel populo scriptorem, modus assentior ne
 									nec. Regione salutandi scripserit ut mea.
 									Duis reque percipitur ius cu, in vix eros
 									molestie, mundi splendide sed cu.
 								</Text>
 							</View>
+						</TouchableOpacity>
+
+						{/* Button container */}
+						<View style={this.styles.buttonContainer}>
 							<TouchableOpacity style={this.styles.rsvpButton}>
-								<Text>RSVP</Text>
+								<Text
+									style={{
+										fontSize: 17,
+										fontWeight: "bold",
+										color: WHITE,
+									}}
+								>
+									RSVP
+								</Text>
+							</TouchableOpacity>
+							<TouchableOpacity style={this.styles.chatButton}>
+								<Image source={chatIcon} />
 							</TouchableOpacity>
 						</View>
-					</TouchableOpacity>
+
+						{/* Event images*/}
+						<ScrollView
+							horizontal
+							style={{
+								display: "flex",
+								paddingLeft: 12,
+								paddingTop: 10,
+								paddingBottom: 10,
+
+								height: "30%",
+							}}
+							contentContainerStyle={{
+								height: "100%",
+								overflow: "scroll",
+							}}
+						>
+							<Image
+								style={this.styles.eventImage}
+								source={image0}
+							/>
+							<Image
+								style={this.styles.eventImage}
+								source={image1}
+							/>
+							<Image
+								style={this.styles.eventImage}
+								source={image2}
+							/>
+							<Image
+								style={this.styles.eventImage}
+								source={image3}
+							/>
+						</ScrollView>
+					</View>
 				)}
 			</Animated.View>
 		);
