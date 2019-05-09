@@ -9,6 +9,7 @@ import TabBarIcon from "../components/TabBarIcon";
 import HomeScreen from "../src/views/ListView/ListView";
 import LinksScreen from "../src/views/MapView/MapView";
 import SettingsScreen from "../src/views/CreateView/CreateView";
+import ProfileView from "../src/views/ProfileView/ProfileView";
 
 const HomeStack = createStackNavigator({
 	Home: HomeScreen,
@@ -56,8 +57,20 @@ SettingsStack.navigationOptions = {
 	),
 };
 
+const ProfileStack = createStackNavigator({ Profile: ProfileView });
+ProfileStack.navigationOptions = {
+	tabBarLabel: "Profile",
+	tabBarIcon: ({ focused }) => (
+		<TabBarIcon
+			focused={focused}
+			name={Platform.OS === "ios" ? "ios-options" : "md-options"}
+		/>
+	),
+};
+
 export default createBottomTabNavigator({
 	HomeStack,
 	LinksStack,
 	SettingsStack,
+	ProfileStack,
 });
