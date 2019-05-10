@@ -2,10 +2,20 @@ import { CREATE_EVENT } from "../actions/ActionTypes";
 
 const initialState = [
 	{
+		key: 20,
+		name: "CS397 Presentation",
+		latitude: 40.113744,
+		longitude: -88.225659,
+		Image:
+			"https://facebook.github.io/react-native/docs/assets/favicon.png",
+		attendees: ["jerry", "leo", "jonathan", "john", "alex"],
+		startTime: "Now",
+	},
+	{
 		key: 0,
-		name: "Name2",
-		latitude: 40.1125,
-		longitude: -88.2266,
+		name: "Photography",
+		latitude: 40.1135,
+		longitude: -88.2166,
 		Image:
 			"https://facebook.github.io/react-native/docs/assets/favicon.png",
 		attendees: ["jerry", "leo", "jonathan", "john", "alex"],
@@ -13,9 +23,9 @@ const initialState = [
 	},
 	{
 		key: 1,
-		name: "Name1",
-		latitude: 40.1149,
-		longitude: -88.2296,
+		name: "Soccer",
+		latitude: 40.1169,
+		longitude: -88.2196,
 
 		Image:
 			"https://facebook.github.io/react-native/docs/assets/favicon.png",
@@ -23,17 +33,17 @@ const initialState = [
 	},
 	{
 		key: 2,
-		name: "Name3",
-		latitude: 40.1125,
-		longitude: -88.2266,
+		name: "Concert",
+		latitude: 40.1165,
+		longitude: -88.2261,
 		Image:
 			"https://facebook.github.io/react-native/docs/assets/favicon.png",
 		attendees: ["jerry", "john", "alex"],
 	},
 	{
 		key: 3,
-		name: "Name4",
-		latitude: 40.1149,
+		name: "Basketball",
+		latitude: 40.1249,
 		longitude: -88.2296,
 
 		Image:
@@ -42,8 +52,8 @@ const initialState = [
 	},
 	{
 		key: 4,
-		name: "Name5",
-		latitude: 40.1125,
+		name: "Movie",
+		latitude: 40.1025,
 		longitude: -88.2266,
 		Image:
 			"https://facebook.github.io/react-native/docs/assets/favicon.png",
@@ -51,8 +61,8 @@ const initialState = [
 	},
 	{
 		key: 5,
-		name: "Name6",
-		latitude: 40.1149,
+		name: "Boba Crawl",
+		latitude: 40.0849,
 		longitude: -88.2296,
 
 		Image:
@@ -61,18 +71,18 @@ const initialState = [
 	},
 	{
 		key: 6,
-		name: "Name7",
+		name: "Studying",
 		latitude: 40.1125,
-		longitude: -88.2266,
+		longitude: -88.2766,
 		Image:
 			"https://facebook.github.io/react-native/docs/assets/favicon.png",
 		attendees: ["jerry", "leo", "alex", "john"],
 	},
 	{
 		key: 7,
-		name: "Name8",
-		latitude: 40.1149,
-		longitude: -88.2296,
+		name: "Peer tutoring",
+		latitude: 40.0869,
+		longitude: -88.2196,
 
 		Image:
 			"https://facebook.github.io/react-native/docs/assets/favicon.png",
@@ -81,9 +91,9 @@ const initialState = [
 
 	{
 		key: 8,
-		name: "Name2",
-		latitude: 40.1125,
-		longitude: -88.2266,
+		name: "Photography",
+		latitude: 40.1925,
+		longitude: -88.2066,
 		Image:
 			"https://facebook.github.io/react-native/docs/assets/favicon.png",
 		attendees: ["jerry", "leo", "jonathan", "john", "alex"],
@@ -91,7 +101,7 @@ const initialState = [
 	},
 	{
 		key: 9,
-		name: "Name1",
+		name: "Soccer",
 		latitude: 40.1149,
 		longitude: -88.2296,
 
@@ -101,7 +111,7 @@ const initialState = [
 	},
 	{
 		key: 10,
-		name: "Name3",
+		name: "Concert",
 		latitude: 40.1125,
 		longitude: -88.2266,
 		Image:
@@ -110,7 +120,7 @@ const initialState = [
 	},
 	{
 		key: 11,
-		name: "Name4",
+		name: "Basketball",
 		latitude: 40.1149,
 		longitude: -88.2296,
 
@@ -120,7 +130,7 @@ const initialState = [
 	},
 	{
 		key: 12,
-		name: "Name5",
+		name: "Movie",
 		latitude: 40.1125,
 		longitude: -88.2266,
 		Image:
@@ -129,7 +139,7 @@ const initialState = [
 	},
 	{
 		key: 13,
-		name: "Name6",
+		name: "Boba Crawl",
 		latitude: 40.1149,
 		longitude: -88.2296,
 
@@ -139,7 +149,7 @@ const initialState = [
 	},
 	{
 		key: 16,
-		name: "Name7",
+		name: "Studying",
 		latitude: 40.1125,
 		longitude: -88.2266,
 		Image:
@@ -148,7 +158,7 @@ const initialState = [
 	},
 	{
 		key: 17,
-		name: "Name8",
+		name: "Peer tutoring",
 		latitude: 40.1149,
 		longitude: -88.2296,
 

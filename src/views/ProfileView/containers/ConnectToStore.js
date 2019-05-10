@@ -5,6 +5,7 @@ import {
 	setSelectedEvent,
 	expandCard,
 	hideCard,
+	rsvpToEvent,
 } from "../../../redux/actions";
 
 const mapStateToProps = state => {
@@ -12,6 +13,7 @@ const mapStateToProps = state => {
 		location: state.map,
 		events: state.events,
 		cardState: state.map.cardData,
+		user: state.user,
 	};
 };
 
@@ -21,6 +23,7 @@ const mapDispatchToProps = dispatch => {
 		setSelectedEvent: event => dispatch(setSelectedEvent(event)),
 		expandCard: () => dispatch(expandCard()),
 		hideCard: () => dispatch(hideCard()),
+		rsvp: eventId => dispatch(rsvpToEvent(eventId)),
 	};
 };
 

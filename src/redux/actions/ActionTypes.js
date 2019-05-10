@@ -16,3 +16,5 @@ export const CLEAR_FORM = "CLEAR_FORM";
 export const EXPAND_CARD = "EXPAND_CARD";
 export const HIDE_CARD = "HIDE_CARD";
 export const LOAD_CARD_DATA = "LOAD_CARD_DATA";
+
+export const RSVP_EVENT = "RSVP_EVENT";

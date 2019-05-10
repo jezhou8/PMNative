@@ -48,7 +48,6 @@ class Map extends React.Component {
 								longitude: event.longitude,
 							}}
 							title={event.name}
-							description={"asdfasdf"}
 							onPress={e => this.onMarkerPress(event)}
 						/>
 					);

@@ -19,6 +19,7 @@ import image1 from "../../../img/photo-1.png";
 import image2 from "../../../img/photo-2.png";
 import image3 from "../../../img/photo-3.png";
 import iconAttending from "../../../img/icon-attending.png";
+
 class EventsListCard extends React.Component {
 	constructor(props) {
 		super(props);
@@ -114,6 +115,18 @@ class EventsListCard extends React.Component {
 		this.animateCard();
 	};
 
+	rsvp = event => {
+		for (let i = 0; i < this.props.user.eventsAttended.length; i++) {
+			let eventAttended = this.props.user.eventsAttended[i];
+			if (event.name == eventAttended.name) {
+				alert("Already RSVP'd to this event!");
+				return;
+			}
+		}
+		alert("RSVP'd!");
+		this.props.rsvpToEvent(event);
+	};
+
 	animateCard() {
 		Animated.timing(
 			// Animate over time
@@ -128,7 +141,7 @@ class EventsListCard extends React.Component {
 
 	componentDidUpdate(oldProps) {
 		const newProps = this.props;
-		console.log(newProps.cardState.selectedEvent);
+		//console.log(newProps.cardState.selectedEvent);
 
 		if (
 			newProps.cardState.selectedEvent != oldProps.cardState.selectedEvent
@@ -217,7 +230,14 @@ class EventsListCard extends React.Component {
 
 						{/* Button container */}
 						<View style={this.styles.buttonContainer}>
-							<TouchableOpacity style={this.styles.rsvpButton}>
+							<TouchableOpacity
+								onPress={() =>
+									this.rsvp(
+										this.props.cardState.selectedEvent
+									)
+								}
+								style={this.styles.rsvpButton}
+							>
 								<Text
 									style={{
 										fontSize: 17,

@@ -28,7 +28,7 @@ class ViewContainer extends React.Component {
 	render() {
 		return (
 			<View style={styles.container}>
-				<EventHeader />
+				<EventHeader navigation={this.props.navigation} />
 				<EventFilters isHidden={this.state.isSearchHidden} />
 				<EventList
 					expandCard={this.props.expandCard}

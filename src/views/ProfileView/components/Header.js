@@ -22,6 +22,7 @@ class ProfileHeader extends React.Component {
 	}
 
 	render() {
+		const { firstName, lastName, stats } = this.props.user;
 		return (
 			<View style={styles.container}>
 				<LinearGradient
@@ -32,13 +33,15 @@ class ProfileHeader extends React.Component {
 				/>
 
 				<Image source={profile2} style={styles.profileImage} />
-				<Text style={styles.profileName}>John Zhou</Text>
+				<Text style={styles.profileName}>
+					{firstName + " " + lastName}
+				</Text>
 				<View style={styles.stats}>
 					<Image source={sunIcon} />
-					<Text style={styles.statText}>200</Text>
+					<Text style={styles.statText}>{stats.kindnessGiven}</Text>
 					<Text style={styles.statText}>|</Text>
 					<Image source={friendsIcon} />
-					<Text style={styles.statText}>200</Text>
+					<Text style={styles.statText}>{stats.friends}</Text>
 				</View>
 
 				<View style={styles.profileNavigator}>
@@ -62,18 +65,16 @@ export default ProfileHeader;
 const styles = StyleSheet.create({
 	container: {
 		width: "100%",
-		height: "50%",
+		height: "45%",
 		alignItems: "center",
 		justifyContent: "center",
-		paddingTop: getStatusBarHeight(),
+		//paddingTop: getStatusBarHeight(),
 	},
 	gradient: {
 		width: "100%",
 		left: 0,
 		right: 0,
-		top: getStatusBarHeight(),
 		height: "100%",
-		borderRadius: 5,
 		position: "absolute",
 	},
 	profileImage: {
@@ -84,6 +85,7 @@ const styles = StyleSheet.create({
 		borderColor: WHITE,
 	},
 	profileName: {
+		paddingTop: 10,
 		fontSize: 34,
 		color: WHITE,
 		fontWeight: "bold",

@@ -1,6 +1,7 @@
 import React from "react";
-import { Animated, View, FlatList } from "react-native";
+import { Animated, View, FlatList, ScrollView } from "react-native";
 import ProfileHeader from "../components/Header";
+import Profile from "../components/Profile";
 
 class ViewContainer extends React.Component {
 	constructor(props) {
@@ -10,7 +11,8 @@ class ViewContainer extends React.Component {
 	render() {
 		return (
 			<View style={styles.container}>
-				<ProfileHeader />
+				<ProfileHeader user={this.props.user} />
+				<Profile user={this.props.user} />
 			</View>
 		);
 	}

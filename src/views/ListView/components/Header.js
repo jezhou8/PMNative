@@ -8,17 +8,24 @@ import {
 } from "react-native";
 import { Icon, SearchBar } from "react-native-elements";
 import { getStatusBarHeight } from "react-native-status-bar-height";
-import profile2 from "../../../img/profile-2.jpg";
+import profile2 from "../../../img/profile-4.jpg";
 
 class EventHeader extends React.Component {
 	constructor(props) {
 		super(props);
 	}
 
+	onPress = () => {
+		this.props.navigation.navigate("Profile");
+	};
+
 	render() {
 		return (
 			<View style={styles.container}>
-				<TouchableOpacity style={styles.profileImage}>
+				<TouchableOpacity
+					onPress={() => this.onPress()}
+					style={styles.profileImage}
+				>
 					<Image
 						style={{
 							width: "100%",
@@ -69,21 +76,5 @@ const styles = StyleSheet.create({
 		borderTopColor: "transparent",
 		padding: 0,
 		width: "85%",
-	},
-	headerText: {
-		fontSize: 30,
-		fontWeight: "bold",
-	},
-	button: {
-		alignItems: "center",
-		backgroundColor: "#FFFFFF",
-		padding: 10,
-	},
-	countContainer: {
-		alignItems: "center",
-		padding: 10,
-	},
-	countText: {
-		color: "#FF00FF",
 	},
 });

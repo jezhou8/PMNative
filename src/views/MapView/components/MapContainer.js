@@ -13,6 +13,8 @@ const EventMap = props => {
 		expandCard,
 		hideCard,
 		setSelectedEvent,
+		rsvpToEvent,
+		user,
 	} = props;
 	return (
 		<View style={styles.container}>
@@ -28,6 +30,8 @@ const EventMap = props => {
 				expandCard={expandCard}
 				hideCard={hideCard}
 				cardState={cardState}
+				rsvpToEvent={rsvpToEvent}
+				user={user}
 			/>
 		</View>
 	);

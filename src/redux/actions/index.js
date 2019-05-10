@@ -6,6 +6,7 @@ import {
 	EXPAND_CARD,
 	HIDE_CARD,
 	LOAD_CARD_DATA,
+	RSVP_EVENT,
 } from "./ActionTypes";
 import { Location } from "expo";
 import { ActionSheetIOS } from "react-native";
@@ -65,5 +66,12 @@ export function setSelectedEvent(event) {
 	return {
 		type: LOAD_CARD_DATA,
 		payload: event,
+	};
+}
+
+export function rsvpToEvent(eventId) {
+	return {
+		type: RSVP_EVENT,
+		payload: eventId,
 	};
 }
