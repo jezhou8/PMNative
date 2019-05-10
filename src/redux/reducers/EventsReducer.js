@@ -1,8 +1,8 @@
-import { CREATE_EVENT } from "../actions/ActionTypes";
+import { CREATE_EVENT, FILTER_EVENT } from "../actions/ActionTypes";
 
 const initialState = [
 	{
-		key: 20,
+		key: 100,
 		name: "CS397 Presentation",
 		latitude: 40.113744,
 		longitude: -88.225659,
@@ -185,6 +185,11 @@ const events = (state = initialState, action) => {
 				},
 				...state,
 			];
+			break;
+		case FILTER_EVENT:
+			return state.filter(function(event) {
+				return event.name !== action.payload;
+			});
 
 		default:
 			return state;

@@ -50,19 +50,19 @@ class EventFilters extends React.Component {
 				/>
 				<ModalDropdown
 					defaultValue='Mood'
-					options={["Sports", "Nightlift", "Food"]}
+					options={["Happy", "Sad", "Mad"]}
 					style={styles.filterButton}
 					textStyle={styles.optionsTextStyle}
 				/>
 				<ModalDropdown
 					defaultValue='Time'
-					options={["Sports", "Nightlift", "Food"]}
+					options={["Now", "Soon", "30+ min."]}
 					style={styles.filterButton}
 					textStyle={styles.optionsTextStyle}
 				/>
 				<ModalDropdown
 					defaultValue='Distance'
-					options={["Sports", "Nightlift", "Food"]}
+					options={[">1 mi.", "1-5 mi", "5+ mi."]}
 					style={styles.filterButton}
 					textStyle={styles.optionsTextStyle}
 				/>

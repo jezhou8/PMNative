@@ -14,10 +14,10 @@ import { Icon, Divider } from "react-native-elements";
 import profile2 from "../../../img/profile-2.jpg";
 import chatIcon from "../../../img/icon-chat.png";
 import { YELLOW, WHITE, GRAY } from "../../Colors";
-import image0 from "../../../img/photo-0.png";
-import image1 from "../../../img/photo-1.png";
-import image2 from "../../../img/photo-2.png";
-import image3 from "../../../img/photo-3.png";
+import image0 from "../../../img/photo-0.jpg";
+import image1 from "../../../img/photo-1.jpg";
+import image2 from "../../../img/photo-2.jpg";
+import image3 from "../../../img/photo-3.jpg";
 import iconAttending from "../../../img/icon-attending.png";
 
 class EventsListCard extends React.Component {

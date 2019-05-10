@@ -6,18 +6,21 @@ import {
 	FlatList,
 	Image,
 	TouchableOpacity,
+	ScrollView,
+	ActionSheetIOS,
 } from "react-native";
 import { LinearGradient } from "expo";
 import { RED, WHITE } from "../../Colors";
 
-import image0 from "../../../img/photo-0.png";
-import image1 from "../../../img/photo-1.png";
-import image2 from "../../../img/photo-2.png";
-import image3 from "../../../img/photo-3.png";
+import image0 from "../../../img/photo-0.jpg";
+import image1 from "../../../img/photo-1.jpg";
+import image2 from "../../../img/photo-2.jpg";
+import image3 from "../../../img/photo-3.jpg";
 import profile2 from "../../../img/profile-2.jpg";
 import profile3 from "../../../img/profile-3.jpg";
 import profile4 from "../../../img/profile-4.jpg";
 import profile5 from "../../../img/profile-5.jpg";
+import { Icon } from "react-native-elements";
 
 class EventList extends React.Component {
 	constructor(props) {
@@ -28,6 +31,21 @@ class EventList extends React.Component {
 		this.props.setSelectedEvent(event);
 		this.props.expandCard();
 		this.props.navigation.navigate("Links");
+	};
+
+	showOptions = event => {
+		const options = ["Hide Event", "Cancel"];
+		ActionSheetIOS.showActionSheetWithOptions(
+			{
+				options,
+				cancelButtonIndex: 1,
+			},
+			buttonIndex => {
+				if (buttonIndex === 0) {
+					this.props.filterEvent(event.name);
+				}
+			}
+		);
 	};
 
 	generateRandomEventPicture = () => {
@@ -57,18 +75,12 @@ class EventList extends React.Component {
 					backgroundColor: "#fff",
 				}}
 			>
-				<FlatList
-					columnWrapperStyle={{
-						flex: 1,
-						justifyContent: "space-evenly",
-					}}
-					contentContainerStyle={styles.listContainer}
-					data={events}
-					renderItem={event => {
-						event = event.item;
+				<ScrollView contentContainerStyle={styles.listContainer}>
+					{events.map(event => {
 						return (
 							<TouchableOpacity
 								style={styles.button}
+								key={event.key}
 								event={event}
 								onPress={() => this.onPress(event)}
 							>
@@ -104,6 +116,7 @@ class EventList extends React.Component {
 										style={{
 											color: "#fff",
 											fontWeight: "bold",
+											fontSize: 22,
 										}}
 									>
 										{event.name}
@@ -137,43 +150,16 @@ class EventList extends React.Component {
 														return profile4;
 												}
 											};
-
-											if (i == 3) {
-												return (
-													<Image
-														key={person}
-														style={{
-															position:
-																"absolute",
-															left: 10 + i * 12,
-															width: 32,
-															height: 32,
-															borderRadius: 16,
-															borderWidth: 1,
-															borderColor: WHITE,
-															top: 10,
-														}}
-														source={this.generateRandomProfilePicture()}
-														zIndex={
-															event.attendees
-																.length - i
-														}
-													/>
-												);
-											}
+											styles.attendeesImage = {
+												...styles.attendeesImage,
+												left: 10 + i * 15,
+											};
 											return (
 												<Image
 													key={person}
-													style={{
-														position: "absolute",
-														left: 10 + i * 12,
-														width: 32,
-														height: 32,
-														borderRadius: 16,
-														borderWidth: 1,
-														borderColor: WHITE,
-														top: 10,
-													}}
+													style={
+														styles.attendeesImage
+													}
 													source={this.generateRandomProfilePicture()}
 													zIndex={
 														event.attendees.length -
@@ -183,13 +169,38 @@ class EventList extends React.Component {
 											);
 										})}
 								</View>
-
+								<View
+									style={{
+										width: "20%",
+										height: "20%",
+										position: "absolute",
+										top: 20,
+										right: 0,
+									}}
+								>
+									<TouchableOpacity
+										style={{
+											width: "100%",
+											height: "100%",
+											alignItems: "center",
+											justifyContent: "center",
+										}}
+										onPress={() => this.showOptions(event)}
+									>
+										<Icon
+											name='more-horiz'
+											type='material'
+											color='#fff'
+										/>
+									</TouchableOpacity>
+								</View>
 								{/* time badge */}
 								<View style={styles.timeBadge}>
 									<Text
 										style={{
 											color: WHITE,
 											fontWeight: "bold",
+											fontSize: 18,
 										}}
 									>
 										Now
@@ -197,9 +208,8 @@ class EventList extends React.Component {
 								</View>
 							</TouchableOpacity>
 						);
-					}}
-					numColumns={2}
-				/>
+					})}
+				</ScrollView>
 			</View>
 		);
 	}
@@ -207,18 +217,29 @@ class EventList extends React.Component {
 
 export default EventList;
 
-const styles = StyleSheet.create({
+const HEIGHT = 55;
+var styles = StyleSheet.create({
 	textColor: {
 		color: "#FFFFFF",
 	},
 	attendees: { position: "absolute" },
+	attendeesImage: {
+		position: "absolute",
+		width: HEIGHT,
+		height: HEIGHT,
+		borderRadius: HEIGHT / 2,
+		borderWidth: 1,
+		borderColor: WHITE,
+		top: 10,
+	},
 	listContainer: {
 		width: "100%",
+		alignItems: "center",
 	},
 	button: {
 		//flex: 1,
 		aspectRatio: 4 / 3,
-		width: "48%",
+		width: "98%",
 		marginBottom: 5,
 		// backgroundColor: "#f00",
 		// borderColor: "#ddd",
@@ -230,14 +251,13 @@ const styles = StyleSheet.create({
 		borderRadius: 5,
 	},
 	eventDescriptionContainer: {
-		padding: 10,
+		paddingBottom: 20,
+		paddingLeft: 15,
 		position: "absolute",
 		bottom: 0,
 	},
 	timeBadge: {
 		backgroundColor: RED,
-		// width: 20,
-		// height: 10,
 		alignSelf: "baseline",
 		borderRadius: 3,
 		position: "absolute",

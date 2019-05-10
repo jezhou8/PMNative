@@ -9,10 +9,10 @@ import {
 	ScrollView,
 } from "react-native";
 
-import image0 from "../../../img/photo-0.png";
-import image1 from "../../../img/photo-1.png";
-import image2 from "../../../img/photo-2.png";
-import image3 from "../../../img/photo-3.png";
+import image0 from "../../../img/photo-0.jpg";
+import image1 from "../../../img/photo-1.jpg";
+import image2 from "../../../img/photo-2.jpg";
+import image3 from "../../../img/photo-3.jpg";
 import { YELLOW, WHITE } from "../../Colors";
 
 class Profile extends React.Component {

@@ -18,3 +18,4 @@ export const HIDE_CARD = "HIDE_CARD";
 export const LOAD_CARD_DATA = "LOAD_CARD_DATA";
 
 export const RSVP_EVENT = "RSVP_EVENT";
+export const FILTER_EVENT = "FILTER_EVENT";

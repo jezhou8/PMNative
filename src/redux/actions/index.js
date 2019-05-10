@@ -7,6 +7,7 @@ import {
 	HIDE_CARD,
 	LOAD_CARD_DATA,
 	RSVP_EVENT,
+	FILTER_EVENT,
 } from "./ActionTypes";
 import { Location } from "expo";
 import { ActionSheetIOS } from "react-native";
@@ -73,5 +74,13 @@ export function rsvpToEvent(eventId) {
 	return {
 		type: RSVP_EVENT,
 		payload: eventId,
+	};
+}
+
+export function filterEvent(eventName) {
+	alert("Hid " + eventName + " events.");
+	return {
+		type: FILTER_EVENT,
+		payload: eventName,
 	};
 }

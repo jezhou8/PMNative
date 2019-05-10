@@ -35,6 +35,7 @@ class ViewContainer extends React.Component {
 					setSelectedEvent={this.props.setSelectedEvent}
 					events={this.props.events}
 					navigation={this.props.navigation}
+					filterEvent={this.props.filterEvent}
 				/>
 			</View>
 		);
