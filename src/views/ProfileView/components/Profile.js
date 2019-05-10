@@ -20,6 +20,12 @@ class Profile extends React.Component {
 		super(props);
 	}
 
+	onPress = event => {
+		this.props.setSelectedEvent(event);
+		this.props.expandCard();
+		this.props.navigation.navigate("Links");
+	};
+
 	render() {
 		console.log(this.props.user);
 		let hasEvents = this.props.user.eventsAttended.length > 0;
@@ -29,7 +35,7 @@ class Profile extends React.Component {
 				contentContainerStyle={styles.contentContainer}
 			>
 				{hasEvents &&
-					this.props.user.eventsAttended.map(function(event, i) {
+					this.props.user.eventsAttended.map((event, i) => {
 						// TODO :  fix key
 
 						return (
@@ -37,7 +43,7 @@ class Profile extends React.Component {
 								<TouchableOpacity
 									style={styles.button}
 									event={event}
-									onPress={() => {}}
+									onPress={() => this.onPress(event)}
 								>
 									<View
 										style={{

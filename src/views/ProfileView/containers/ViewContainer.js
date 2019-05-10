@@ -12,7 +12,13 @@ class ViewContainer extends React.Component {
 		return (
 			<View style={styles.container}>
 				<ProfileHeader user={this.props.user} />
-				<Profile user={this.props.user} />
+				<Profile
+					user={this.props.user}
+					expandCard={this.props.expandCard}
+					setSelectedEvent={this.props.setSelectedEvent}
+					events={this.props.events}
+					navigation={this.props.navigation}
+				/>
 			</View>
 		);
 	}
