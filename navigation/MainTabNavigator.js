@@ -5,11 +5,12 @@ import {
 	createBottomTabNavigator,
 } from "react-navigation";
 
-import TabBarIcon from "../components/TabBarIcon";
 import HomeScreen from "../src/views/ListView/ListView";
 import LinksScreen from "../src/views/MapView/MapView";
 import SettingsScreen from "../src/views/CreateView/CreateView";
 import ProfileView from "../src/views/ProfileView/ProfileView";
+import { Icon } from "react-native-elements";
+import { YELLOW, GRAY } from "../src/views/Colors";
 
 const HomeStack = createStackNavigator({
 	Home: HomeScreen,
@@ -17,14 +18,15 @@ const HomeStack = createStackNavigator({
 
 HomeStack.navigationOptions = {
 	tabBarLabel: "Browse",
+	tabBarOptions: {
+		activeTintColor: YELLOW,
+		inactiveTintColor: GRAY,
+	},
 	tabBarIcon: ({ focused }) => (
-		<TabBarIcon
-			focused={focused}
-			name={
-				Platform.OS === "ios"
-					? `ios-information-circle${focused ? "" : "-outline"}`
-					: "md-information-circle"
-			}
+		<Icon
+			color={focused ? YELLOW : GRAY}
+			name='date-range'
+			type='material'
 		/>
 	),
 };
@@ -35,11 +37,12 @@ const LinksStack = createStackNavigator({
 
 LinksStack.navigationOptions = {
 	tabBarLabel: "Map",
+	tabBarOptions: {
+		activeTintColor: YELLOW,
+		inactiveTintColor: GRAY,
+	},
 	tabBarIcon: ({ focused }) => (
-		<TabBarIcon
-			focused={focused}
-			name={Platform.OS === "ios" ? "ios-link" : "md-link"}
-		/>
+		<Icon color={focused ? YELLOW : GRAY} name='map' type='material' />
 	),
 };
 
@@ -49,22 +52,24 @@ const SettingsStack = createStackNavigator({
 
 SettingsStack.navigationOptions = {
 	tabBarLabel: "Create",
+	tabBarOptions: {
+		activeTintColor: YELLOW,
+		inactiveTintColor: GRAY,
+	},
 	tabBarIcon: ({ focused }) => (
-		<TabBarIcon
-			focused={focused}
-			name={Platform.OS === "ios" ? "ios-options" : "md-options"}
-		/>
+		<Icon color={focused ? YELLOW : GRAY} name='create' type='material' />
 	),
 };
 
 const ProfileStack = createStackNavigator({ Profile: ProfileView });
 ProfileStack.navigationOptions = {
 	tabBarLabel: "Profile",
+	tabBarOptions: {
+		activeTintColor: YELLOW,
+		inactiveTintColor: GRAY,
+	},
 	tabBarIcon: ({ focused }) => (
-		<TabBarIcon
-			focused={focused}
-			name={Platform.OS === "ios" ? "ios-options" : "md-options"}
-		/>
+		<Icon color={focused ? YELLOW : GRAY} name='person' type='material' />
 	),
 };
 
